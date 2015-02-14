@@ -1,0 +1,9 @@
+[submodule "llvm"]
+	path = llvm
+	url = git://github.com/smolt/llvm.git
+[submodule "iphoneos-apple-support"]
+	path = iphoneos-apple-support
+	url = git://github.com/smolt/iphoneos-apple-support.git
+[submodule "ldc"]
+	path = ldc
+	url = git://github.com/smolt/ldc.git
