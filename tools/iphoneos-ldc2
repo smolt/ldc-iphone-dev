@@ -1,0 +1,27 @@
+#!/bin/bash
+# Little frontend until ldc2 is updated with proper defaults for
+# iPhoneOS.  Really all this is doing is defaulting -mtriple and -mcpu
+# to values in tools/flag.
+
+tooldir=`dirname $BASH_SOURCE[0]`
+topdir=`cd $tooldir/..; pwd`
+
+source $tooldir/flags		# default dflags
+
+case $0 in
+    *-ldc2) prog=ldc2;;
+    *-ldmd2) prog=ldmd2;;
+esac
+
+for arg in "$@"; do
+    case $arg in
+	*-mtriple*) triple=;;
+	*-mcpu*) cpu=;;
+	-v|-vv) verbose=1;;
+    esac
+done
+
+cmd="$topdir/build/ldc/bin/$prog $triple $cpu"
+
+[ "$verbose" ] && echo $cmd "$@"
+$cmd "$@"

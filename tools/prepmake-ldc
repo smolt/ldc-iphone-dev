@@ -1,0 +1,61 @@
+#!/bin/bash
+# configure to build LDC for iPhoneOS armv7 (iPhone 4 and later 32-bit stuff)
+# assumes LLVM is already built
+
+# top dir is one up from this script's dir
+topdir=`dirname $BASH_SOURCE[0]`/..
+
+# LLVM_ROOT_DIR must be an absolute path for some reason
+absolute=`cd $topdir; pwd`
+llvmdir="$absolute/build/llvm/Release/"
+
+if [ ! -d "$llvmdir" ]; then
+    echo "Missing $llvmdir"
+    echo 'LLVM does not seem to be built yet'
+    exit 1
+fi
+
+# Need Xcode with the iPhoneOS SDK
+iphonesdk=`xcrun --sdk iphoneos --show-sdk-path`
+
+if [ -z "$iphonesdk" ]; then
+    echo "Missing iPhoneOS SDK, can't build C code in druntime/phobos"
+    exit 1
+fi
+
+# get cflags, dflags.
+# cmake needs dflags to be separated by ';' instead of spaces, so xlate
+source $topdir/tools/flags
+dflags_cmake=`echo $dflags|tr -s ' ' ';'`
+
+# What's with all these flags?
+# -DUSE_REAL64 tells LDC to use a 64-bit real (like double) The D
+# versions are to support troubleshooting issues detected by unittest.
+#
+# WIP_FloatPrecIssue - work in progress for some floating point
+#   precision problems
+#
+# WIP_FloatOptimizeIssue - work in progress on float results that are
+#   wrong only when running optimized code
+#
+# WIP_FiberIssue - Fiber context switch messes up when running
+#   optimized code and access same Fiber from multiple cores.  No
+#   issue on single core cortex-a8
+#
+# The debug libs are built without -g or -gc because the generated
+# debug info causes the link to fail.  But the debug libs have asserts
+# and contracts and seem less susceptible to codegen errors.
+#
+# Also, NEON instructions are disabled for optimized builds because of
+# a codegen problem when optimizing.  Only place detected so far is in
+# unittest for std.random where a vst1.64 neon instruction needing
+# 128-bit aligned data, get 64-bit alignment instead.  Oh well.
+
+cd $topdir/build/ldc && cmake \
+-DLLVM_ROOT_DIR=$llvmdir \
+-DCMAKE_CXX_FLAGS='-DUSE_REAL64' \
+-DD_FLAGS="-w;-d;$dflags_cmake;-d-version=WIP_FloatPrecIssue" \
+-DD_FLAGS_DEBUG='' \
+-DD_FLAGS_RELEASE='-O3;-release;-mattr=-neon;-d-version=WIP_FiberIssue;-d-version=WIP_FloatOptimizeIssue' \
+-DTARGET_C_FLAGS="$cflags -isysroot $iphonesdk" \
+../../ldc

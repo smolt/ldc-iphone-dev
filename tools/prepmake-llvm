@@ -1,0 +1,12 @@
+#!/bin/bash
+# configure llvm in build/llvm to build targets for arm (iphoneos) and
+# x86 (iphonesimulator)
+
+# top dir is one up from this script's dir
+topdir=`dirname $BASH_SOURCE[0]`/..
+
+cd $topdir/build/llvm &&
+    ../../llvm/configure \
+	--enable-optimized --disable-assertions \
+	--enable-targets=arm,arm64,x86,x86_64 \
+	--target=armv7-apple-darwin

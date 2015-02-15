@@ -1,0 +1,32 @@
+#!/bin/bash
+# Simple build it all script that always tries to rebuild llvm, ldc,
+# and support libs from scratch.
+
+# top dir is one up from this script's is dir
+cd `dirname $BASH_SOURCE[0]`/..
+
+# clean out previous build, but only if insistent
+if [ -d build ]; then
+    if [ "$1" != '-f' ]; then
+	echo 'build directory already exists.'
+	echo "Use $0 -f if you want to build all from scratch"
+	exit 1
+    fi
+
+    echo 'cleaning out previous build'
+    rm -Rf build
+fi
+
+# Use multi cpus, but try to leave one left for other work
+ncpu=`sysctl -n hw.logicalcpu_max`
+[ $ncpu -gt 1 ] && let ncpu--
+
+make -j $ncpu
+
+# Make essentially does the following first time
+# mkdir -p build/llvm build/ldc &&
+#     tools/prepmake-llvm &&
+#     make -C build/llvm -j $ncpu &&
+#     tools/prepmake-ldc &&
+#     make -C build/ldc -j $ncpu &&
+#     make -C iphoneos-apple-support

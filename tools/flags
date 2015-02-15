@@ -1,0 +1,15 @@
+# -*-sh-*-
+# source me! compiler flags that other scripts can look up
+# This makes it easier to change default compiler flags wholesale
+
+# iOS uses thumb2 with armv7 arch.  iPhone4 is cortex-a8, about the oldest
+# device pretty much still in use.
+
+triple='-mtriple=thumbv7-apple-ios5'
+cpu='-mcpu=cortex-a8'
+dflags="$triple $cpu"
+
+# equiv C flags.  I think iphonesdk clang pretty much assumes all this if
+# you just say -arm armv7, but not absolutely certain
+
+cflags='-target armv7-apple-darwin -mcpu=cortex-a8'
