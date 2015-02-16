@@ -1,1 +1,36 @@
-/build/
+# Stuff for .gitignore when working under xcode
+
+# osx stuff not wanted
+.DS_Store
+.Trashes
+*.swp
+
+# xcode stuff not wanted in repository
+*~.nib
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+# keep default ones though, some projects need to use
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# don't want xcode user prefs, may want to keep personal schemes
+# under xcuserdata directories.
+# older git versions younger than 1.8.2
+xcdebugger
+UserInterfaceState.xcuserstate
+xcuserdata/
+
+# is this needed?
+#*. xcuserdatad
+
+# git 1.8.2 or newer has ** and can help to save personal schemes
+#xcuserdata/**/*
+#!xcuserdata/**/xcschemes/*
+
+*.moved-aside
