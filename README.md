@@ -23,6 +23,7 @@ Still, you should be able to clone and build this with:
 
 ```
 $ git clone --recursive https://github.com/smolt/ldc-iphone-dev.git
+$ cd ldc-iphone-dev
 $ tools/build-all
 ```
 
