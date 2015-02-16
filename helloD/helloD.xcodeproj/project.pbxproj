@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		37FF98DE1A91607C00098723 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37FF98DC1A9157E200098723 /* Default-568h@2x.png */; };
+		37FF999B1A91926900098723 /* main.d in Sources */ = {isa = PBXBuildFile; fileRef = 37FF99991A91926900098723 /* main.d */; };
+		37FF99AB1A91956E00098723 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37FF98DC1A9157E200098723 /* Default-568h@2x.png */; };
+		37FF99B51A91961C00098723 /* libphobos2-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FF999D1A9192B800098723 /* libphobos2-ldc-debug.a */; };
+		37FF99B61A91961C00098723 /* libdruntime-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FF999E1A9192B800098723 /* libdruntime-ldc-debug.a */; };
+		37FF99B71A91961C00098723 /* libiphoneossup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FF99A11A9192CF00098723 /* libiphoneossup.a */; };
+		37FF99BA1A91965B00098723 /* main_nolibs.d in Sources */ = {isa = PBXBuildFile; fileRef = 37FF99B81A91964C00098723 /* main_nolibs.d */; };
+		37FF99C01A91988600098723 /* libdruntime-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FF999E1A9192B800098723 /* libdruntime-ldc-debug.a */; };
+		37FF99C11A91988600098723 /* libiphoneossup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FF99A11A9192CF00098723 /* libiphoneossup.a */; };
+		37FF99C31A91988600098723 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37FF98DC1A9157E200098723 /* Default-568h@2x.png */; };
+		37FF99CB1A91999400098723 /* main_druntime.d in Sources */ = {isa = PBXBuildFile; fileRef = 37FF99CA1A91999400098723 /* main_druntime.d */; };
+		37FF99D21A91CE8100098723 /* libphobos2-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FF999D1A9192B800098723 /* libphobos2-ldc-debug.a */; };
+		37FF99D31A91CE8100098723 /* libdruntime-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FF999E1A9192B800098723 /* libdruntime-ldc-debug.a */; };
+		37FF99D41A91CE8100098723 /* libiphoneossup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FF99A11A9192CF00098723 /* libiphoneossup.a */; };
+		37FF99D61A91CE8100098723 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37FF98DC1A9157E200098723 /* Default-568h@2x.png */; };
+		37FF99DF1A91D13C00098723 /* main_call_somed.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FF99DD1A91D13C00098723 /* main_call_somed.m */; };
+		37FF99E01A91D13C00098723 /* somedcode.d in Sources */ = {isa = PBXBuildFile; fileRef = 37FF99DE1A91D13C00098723 /* somedcode.d */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		37FF98E11A91644000098723 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.d";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			name = "D source code '*.d'";
+			outputFiles = (
+				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o",
+			);
+			script = "../tools/iphoneos-ldc2 -v -O${OPTIMIZATION_LEVEL} -c -od=\"${DERIVED_FILES_DIR}\" \"${INPUT_FILE_PATH}\"";
+		};
+		37FF99AC1A91956E00098723 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.d";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			name = "D source code '*.d'";
+			outputFiles = (
+				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o",
+			);
+			script = "../tools/iphoneos-ldc2 -v -g -O${OPTIMIZATION_LEVEL} -c -od=\"${DERIVED_FILES_DIR}\" \"${INPUT_FILE_PATH}\"";
+		};
+		37FF99C41A91988600098723 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.d";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			name = "D source code '*.d'";
+			outputFiles = (
+				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o",
+			);
+			script = "../tools/iphoneos-ldc2 -v -O${OPTIMIZATION_LEVEL} -c -od=\"${DERIVED_FILES_DIR}\" \"${INPUT_FILE_PATH}\"";
+		};
+		37FF99D71A91CE8100098723 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.d";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			name = "D source code '*.d'";
+			outputFiles = (
+				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o",
+			);
+			script = "../tools/iphoneos-ldc2 -v -O${OPTIMIZATION_LEVEL} -c -od=\"${DERIVED_FILES_DIR}\" \"${INPUT_FILE_PATH}\"";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXFileReference section */
+		37FF985E1A901EE300098723 /* helloD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helloD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37FF98DC1A9157E200098723 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		37FF99991A91926900098723 /* main.d */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.dtrace; path = main.d; sourceTree = "<group>"; };
+		37FF999A1A91926900098723 /* helloD-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "helloD-Info.plist"; path = "support/helloD-Info.plist"; sourceTree = "<group>"; };
+		37FF999D1A9192B800098723 /* libphobos2-ldc-debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libphobos2-ldc-debug.a"; path = "../build/ldc/lib/libphobos2-ldc-debug.a"; sourceTree = "<group>"; };
+		37FF999E1A9192B800098723 /* libdruntime-ldc-debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libdruntime-ldc-debug.a"; path = "../build/ldc/lib/libdruntime-ldc-debug.a"; sourceTree = "<group>"; };
+		37FF99A11A9192CF00098723 /* libiphoneossup.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiphoneossup.a; path = "../iphoneos-apple-support/libiphoneossup.a"; sourceTree = "<group>"; };
+		37FF99B01A91956E00098723 /* helloD_nolibs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helloD_nolibs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37FF99B11A91956F00098723 /* helloD_nolibs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "helloD_nolibs-Info.plist"; path = "support/helloD_nolibs-Info.plist"; sourceTree = "<group>"; };
+		37FF99B81A91964C00098723 /* main_nolibs.d */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.dtrace; path = main_nolibs.d; sourceTree = "<group>"; };
+		37FF99C81A91988600098723 /* helloD_druntime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helloD_druntime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37FF99C91A91988600098723 /* helloD_druntime-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "helloD_druntime-Info.plist"; path = "support/helloD_druntime-Info.plist"; sourceTree = "<group>"; };
+		37FF99CA1A91999400098723 /* main_druntime.d */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.dtrace; path = main_druntime.d; sourceTree = "<group>"; };
+		37FF99DB1A91CE8100098723 /* objc_helloD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = objc_helloD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37FF99DC1A91CE8100098723 /* objc_helloD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "objc_helloD-Info.plist"; path = "support/objc_helloD-Info.plist"; sourceTree = "<group>"; };
+		37FF99DD1A91D13C00098723 /* main_call_somed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main_call_somed.m; sourceTree = "<group>"; };
+		37FF99DE1A91D13C00098723 /* somedcode.d */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.dtrace; path = somedcode.d; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		37FF985B1A901EE300098723 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99B51A91961C00098723 /* libphobos2-ldc-debug.a in Frameworks */,
+				37FF99B61A91961C00098723 /* libdruntime-ldc-debug.a in Frameworks */,
+				37FF99B71A91961C00098723 /* libiphoneossup.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99A61A91956E00098723 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99BE1A91988600098723 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99C01A91988600098723 /* libdruntime-ldc-debug.a in Frameworks */,
+				37FF99C11A91988600098723 /* libiphoneossup.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99D11A91CE8100098723 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99D21A91CE8100098723 /* libphobos2-ldc-debug.a in Frameworks */,
+				37FF99D31A91CE8100098723 /* libdruntime-ldc-debug.a in Frameworks */,
+				37FF99D41A91CE8100098723 /* libiphoneossup.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37FF98551A901EE200098723 = {
+			isa = PBXGroup;
+			children = (
+				37FF99991A91926900098723 /* main.d */,
+				37FF99B81A91964C00098723 /* main_nolibs.d */,
+				37FF99CA1A91999400098723 /* main_druntime.d */,
+				37FF99DD1A91D13C00098723 /* main_call_somed.m */,
+				37FF99DE1A91D13C00098723 /* somedcode.d */,
+				37FF99CD1A91A19400098723 /* support */,
+				37FF99CC1A91A17500098723 /* libs */,
+				37FF985F1A901EE300098723 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		37FF985F1A901EE300098723 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				37FF985E1A901EE300098723 /* helloD.app */,
+				37FF99B01A91956E00098723 /* helloD_nolibs.app */,
+				37FF99C81A91988600098723 /* helloD_druntime.app */,
+				37FF99DB1A91CE8100098723 /* objc_helloD.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		37FF99CC1A91A17500098723 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				37FF999D1A9192B800098723 /* libphobos2-ldc-debug.a */,
+				37FF999E1A9192B800098723 /* libdruntime-ldc-debug.a */,
+				37FF99A11A9192CF00098723 /* libiphoneossup.a */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		37FF99CD1A91A19400098723 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				37FF999A1A91926900098723 /* helloD-Info.plist */,
+				37FF99B11A91956F00098723 /* helloD_nolibs-Info.plist */,
+				37FF99C91A91988600098723 /* helloD_druntime-Info.plist */,
+				37FF99DC1A91CE8100098723 /* objc_helloD-Info.plist */,
+				37FF98DC1A9157E200098723 /* Default-568h@2x.png */,
+			);
+			name = support;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		37FF985D1A901EE300098723 /* helloD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37FF98811A901EE300098723 /* Build configuration list for PBXNativeTarget "helloD" */;
+			buildPhases = (
+				37FF985A1A901EE300098723 /* Sources */,
+				37FF985B1A901EE300098723 /* Frameworks */,
+				37FF985C1A901EE300098723 /* Resources */,
+			);
+			buildRules = (
+				37FF98E11A91644000098723 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = helloD;
+			productName = helloD;
+			productReference = 37FF985E1A901EE300098723 /* helloD.app */;
+			productType = "com.apple.product-type.application";
+		};
+		37FF99A31A91956E00098723 /* helloD_nolibs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37FF99AD1A91956E00098723 /* Build configuration list for PBXNativeTarget "helloD_nolibs" */;
+			buildPhases = (
+				37FF99A41A91956E00098723 /* Sources */,
+				37FF99A61A91956E00098723 /* Frameworks */,
+				37FF99AA1A91956E00098723 /* Resources */,
+			);
+			buildRules = (
+				37FF99AC1A91956E00098723 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = helloD_nolibs;
+			productName = helloD;
+			productReference = 37FF99B01A91956E00098723 /* helloD_nolibs.app */;
+			productType = "com.apple.product-type.application";
+		};
+		37FF99BB1A91988600098723 /* helloD_druntime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37FF99C51A91988600098723 /* Build configuration list for PBXNativeTarget "helloD_druntime" */;
+			buildPhases = (
+				37FF99BC1A91988600098723 /* Sources */,
+				37FF99BE1A91988600098723 /* Frameworks */,
+				37FF99C21A91988600098723 /* Resources */,
+			);
+			buildRules = (
+				37FF99C41A91988600098723 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = helloD_druntime;
+			productName = helloD;
+			productReference = 37FF99C81A91988600098723 /* helloD_druntime.app */;
+			productType = "com.apple.product-type.application";
+		};
+		37FF99CE1A91CE8100098723 /* objc_helloD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37FF99D81A91CE8100098723 /* Build configuration list for PBXNativeTarget "objc_helloD" */;
+			buildPhases = (
+				37FF99CF1A91CE8100098723 /* Sources */,
+				37FF99D11A91CE8100098723 /* Frameworks */,
+				37FF99D51A91CE8100098723 /* Resources */,
+			);
+			buildRules = (
+				37FF99D71A91CE8100098723 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = objc_helloD;
+			productName = helloD;
+			productReference = 37FF99DB1A91CE8100098723 /* objc_helloD.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		37FF98561A901EE200098723 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = smolt;
+				TargetAttributes = {
+					37FF985D1A901EE300098723 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 37FF98591A901EE200098723 /* Build configuration list for PBXProject "helloD" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 37FF98551A901EE200098723;
+			productRefGroup = 37FF985F1A901EE300098723 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				37FF985D1A901EE300098723 /* helloD */,
+				37FF99A31A91956E00098723 /* helloD_nolibs */,
+				37FF99BB1A91988600098723 /* helloD_druntime */,
+				37FF99CE1A91CE8100098723 /* objc_helloD */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		37FF985C1A901EE300098723 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF98DE1A91607C00098723 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99AA1A91956E00098723 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99AB1A91956E00098723 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99C21A91988600098723 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99C31A91988600098723 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99D51A91CE8100098723 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99D61A91CE8100098723 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		37FF985A1A901EE300098723 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF999B1A91926900098723 /* main.d in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99A41A91956E00098723 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99BA1A91965B00098723 /* main_nolibs.d in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99BC1A91988600098723 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99CB1A91999400098723 /* main_druntime.d in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37FF99CF1A91CE8100098723 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37FF99E01A91D13C00098723 /* somedcode.d in Sources */,
+				37FF99DF1A91D13C00098723 /* main_call_somed.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		37FF987F1A901EE300098723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = armv7;
+			};
+			name = Debug;
+		};
+		37FF98801A901EE300098723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
+			};
+			name = Release;
+		};
+		37FF98821A901EE300098723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "support/helloD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		37FF98831A901EE300098723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "support/helloD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		37FF99AE1A91956E00098723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "support/helloD_nolibs-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
+				PRODUCT_NAME = helloD_nolibs;
+			};
+			name = Debug;
+		};
+		37FF99AF1A91956E00098723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "support/helloD_nolibs-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
+				PRODUCT_NAME = helloD_nolibs;
+			};
+			name = Release;
+		};
+		37FF99C61A91988600098723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "support/helloD_druntime-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
+				PRODUCT_NAME = helloD_druntime;
+			};
+			name = Debug;
+		};
+		37FF99C71A91988600098723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "support/helloD_druntime-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
+				PRODUCT_NAME = helloD_druntime;
+			};
+			name = Release;
+		};
+		37FF99D91A91CE8100098723 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "support/objc_helloD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
+				PRODUCT_NAME = objc_helloD;
+			};
+			name = Debug;
+		};
+		37FF99DA1A91CE8100098723 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "support/objc_helloD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
+				PRODUCT_NAME = objc_helloD;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		37FF98591A901EE200098723 /* Build configuration list for PBXProject "helloD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37FF987F1A901EE300098723 /* Debug */,
+				37FF98801A901EE300098723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37FF98811A901EE300098723 /* Build configuration list for PBXNativeTarget "helloD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37FF98821A901EE300098723 /* Debug */,
+				37FF98831A901EE300098723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37FF99AD1A91956E00098723 /* Build configuration list for PBXNativeTarget "helloD_nolibs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37FF99AE1A91956E00098723 /* Debug */,
+				37FF99AF1A91956E00098723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37FF99C51A91988600098723 /* Build configuration list for PBXNativeTarget "helloD_druntime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37FF99C61A91988600098723 /* Debug */,
+				37FF99C71A91988600098723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37FF99D81A91CE8100098723 /* Build configuration list for PBXNativeTarget "objc_helloD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37FF99D91A91CE8100098723 /* Debug */,
+				37FF99DA1A91CE8100098723 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 37FF98561A901EE200098723 /* Project object */;
+}

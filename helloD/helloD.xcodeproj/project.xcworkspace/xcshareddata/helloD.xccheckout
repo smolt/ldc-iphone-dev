@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>406C8752-FECF-4D0E-8E41-297DEE119F15</string>
+	<key>IDESourceControlProjectName</key>
+	<string>helloD</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>189F6217FCE5493F40B7CA9FCF0654AAC0ACDAA9</key>
+		<string>github.com:smolt/ldc-iphone-dev.git</string>
+		<key>4D6A1BDD01891426A22DAE0955758532CA385554</key>
+		<string>git://github.com/smolt/iphoneos-apple-support.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>helloD/helloD.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>189F6217FCE5493F40B7CA9FCF0654AAC0ACDAA9</key>
+		<string>../../..</string>
+		<key>4D6A1BDD01891426A22DAE0955758532CA385554</key>
+		<string>../../..iphoneos-apple-support</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:smolt/ldc-iphone-dev.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>189F6217FCE5493F40B7CA9FCF0654AAC0ACDAA9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>189F6217FCE5493F40B7CA9FCF0654AAC0ACDAA9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ldc-iphone-dev</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4D6A1BDD01891426A22DAE0955758532CA385554</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ldc-iphone-deviphoneos-apple-support</string>
+		</dict>
+	</array>
+</dict>
+</plist>
