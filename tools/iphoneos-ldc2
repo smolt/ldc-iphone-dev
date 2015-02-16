@@ -21,7 +21,13 @@ for arg in "$@"; do
     esac
 done
 
-cmd="$topdir/build/ldc/bin/$prog $triple $cpu"
+progpath="$topdir/build/ldc/bin/$prog"
 
+if [ ! -x "$progpath" ]; then
+    echo >&2 "$progpath does not seem to be built yet"
+    exit 1
+fi
+
+cmd="$progpath $triple $cpu"
 [ "$verbose" ] && echo $cmd "$@"
 $cmd "$@"

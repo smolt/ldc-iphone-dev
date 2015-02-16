@@ -43,7 +43,7 @@ dflags_cmake=`echo $dflags|tr -s ' ' ';'`
 #   issue on single core cortex-a8
 #
 # The debug libs are built without -g or -gc because the generated
-# debug info causes the link to fail.  But the debug libs have asserts
+# debug info causes the dsymutil to fail.  But the debug libs have asserts
 # and contracts and seem less susceptible to codegen errors.
 #
 # Also, NEON instructions are disabled for optimized builds because of
