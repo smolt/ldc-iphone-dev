@@ -5,7 +5,7 @@ This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various piec
 
 Versions derived from: LDC 0.15.1 (DMD v2.066.1) and LLVM 3.5.1.
 
-There is still much left [to do](#what-is-missing).
+There is still stuff to [work on](#what-is-missing), but overall the core D language is ready to try on iOS.
 
 ## License 
 Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/blob/master/APPLE_LICENSE) in directory iphoneos-apple-support before using.  This subdirectory has some modified source code derived from http://www.opensource.apple.com that makes TLS work on iOS.  As I understand it, if you publish an app or source that uses that code, you need to follow the provisions of the license.
@@ -13,10 +13,12 @@ Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/
 LLVM also has its [LICENSE.TXT](https://github.com/smolt/llvm/blob/ios/LICENSE.TXT) and LDC its combined [LICENSE](https://github.com/smolt/ldc/blob/ios/LICENSE).
 
 ## Prerequisites
+You will need an OS X host and Xcode.  I am currently on Mavericks 10.9 and Xcode 6.1.1.
+
 The prerequisite packages are pretty much the same as listed for [building LDC](http://wiki.dlang.org/Building_LDC_from_source) with my comments in parentheses:
 
 - git
-- a C++ toolchain (Use Xcode since iPhoneSDK is needed anyway to cross compile C in druntime/phobos, and to link, run on an iOS device) 
+- a C++ toolchain (use Xcode since iPhoneSDK is needed anyway to cross compile C in druntime/phobos and to run on an iOS device)
 - CMake 2.8+ (I am using cmake-3.1.0-Darwin64.dmg from http://www.cmake.org/download/.  You will need to install command line tools by running CMake app and using install command line menu choice)
 - libconfig++ and its header files (I built from source downloaded from http://www.hyperrealm.com/libconfig/)
 - libcurl (needed by std.net.curl but I have not built for iOS yet. On TODO list)
@@ -26,8 +28,6 @@ LLVM is included as a submodule since it has been modified to support TLS on iOS
 To really have fun, you will need some way to run on an iOS device. Membership in the iOS Developer Program is one way to do it.
 
 ## Build
-This is still a work in progress as I gradually cleanup and include my build and test tools in this repo.  I also have very simple iOS apps to include.
-
 Download with git and build:
 
 ```
@@ -36,7 +36,9 @@ $ cd ldc-iphone-dev
 $ tools/build-all
 ```
 
-The shell script `build-all` may eventually do some nice checking, but for now mostly just calls `make -j n` where `n` is all your cores but one.
+and grab a cup of coffee.  It will build LLMV, LDC, druntime, phobos,
+and iphone-apple-support.  LLVM takes the longest by far, but probably
+only needs to be built once.  The shell script `build-all` may eventually do some nice checking, but for now mostly just calls `make -j n` where `n` is all your cores but one.
 
 You can quickly try the resulting compiler yourself by typing:
 
@@ -44,9 +46,9 @@ You can quickly try the resulting compiler yourself by typing:
 $ tools/iphoneos-ldc2 -c hello.d
 ```
 
-This only gives you a .o file, but using Xcode and a provisioning profile, you could link, codesign, bundle, install, and run it an iOS device.  A sample Xcode [project](#sample-hellod-project) does just that if you have a provisioning profile.
+This only gives you a .o file but using Xcode and a provisioning profile you could link, codesign, bundle, and run it on an iOS device.  A sample Xcode [project](#sample-hellod-project) does just that if you have a provisioning profile.
 
-At this point, you have an LDC toolchain and druntime/phobos built for 32-bit armv7 iOS.  See `build/ldc/bin and build/ldc/lib`.  This ldc2 was configured to target all iOS devices from original iPhone (armv6) to iPhone 6 (arm64) but my only iOS devices are armv7, so that is the target I build libs for.  All iOS device from iPhone 3gs, iPod 3, AppleTV can run armv7 instructions, so that is not so bad.  The equivalent gcc or clang target is armv7-apple-darwin, but under the hood in LLVM it is really thumbv7-apple-ios with cortex-a8 selected to enable neon and vfp3.
+At this point, you have an LDC toolchain and druntime/phobos built for 32-bit armv7 iOS in `build/ldc`.  This ldc2 is actually configured to target all iOS devices from original iPhone (armv6) to iPhone 6 (arm64).   My only iOS devices are armv7 so that is the only target being built.  Plus, all iOS device from iPhone 3gs, iPod 3, AppleTV and up can run armv7 instructions [(see Device Compatability)](https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html).  The equivalent gcc or clang target is armv7-apple-darwin, but under the hood in LLVM it is really thumbv7-apple-ios with cortex-a8 selected to enable neon and vfp3.
 
 `iphoneos-ldc2` is nothing more than a script that does this:
 
@@ -54,12 +56,14 @@ At this point, you have an LDC toolchain and druntime/phobos built for 32-bit ar
 $ build/ldc/bin/ldc2 -mtriple=thumbv7-apple-ios5 -mcpu=cortex-a8 -c hello.d
 ```
 
-A script makes it easy to manage compiler defaults.  Clang presets many options when compiling for iOS based on the -arch switch but these presets are not in ldc2 main yet.  For now I think it is easier to tweak options with the iphoneos-ldc2 script.  Eventually ldc2 will be taught the iOS clang preset options for each iOS arch: armv6, armv7, armv7s, and arm64.
+This script makes it easy to manage compiler defaults.  Clang presets many options when compiling for iOS based on the -arch switch but these presets are not in ldc2 main yet.  For now I think it is easier to tweak options with the iphoneos-ldc2 script.  Eventually ldc2 will be taught the iOS clang preset options for each iOS arch: armv6, armv7, armv7s, and arm64.
 
-The ldc2 in build/ldc/bin can also target x86 and x86_64.  This is for eventual use of the iPhone Simulator.  Unfortunately you cannot run all D on iPhone Sim yet because ld refuses to link files with thread local variables (required by D) when targeting iPhone Sim.  I would assume this is just to prevent running code on the sim that cannot run in iOS.  I also think we can get around this by inserting our own ld.
+The ldc2 in build/ldc/bin can also target x86 and x86_64.  This is for eventual use of the iPhone Simulator.  Unfortunately you cannot run LDC compiled source on iPhone Sim yet because ld refuses to link files with OS X thread local variables when targeting iPhone Sim.  I assume this is just to prevent running code on the sim that cannot run in iOS.  I think we can get around this by using our own ld or using a different TLS approach that ld won't detect.
+
+More will eventually be added to tools.  It is could be useful to add tools to your PATH.
 
 ## Sample helloD Project
-[helloD](https://github.com/smolt/ldc-iphone-dev/helloD) is a barebones Xcode project with four simple targets.  It only uses the console to demonstrate LDC compiled code running on an iOS device.
+[helloD](https://github.com/smolt/ldc-iphone-dev/tree/master/helloD) is a barebones Xcode project with four simple targets.  It only uses the console to demonstrate LDC compiled code running on an iOS device.
 
 - hello_nolibs - the simplest barebones D without reliance on any D libs or libiphoneossup (not needed if TLS not used).
 - helloD_druntime - a demo of various things in druntime including threads, TLS vars, and garbage collection.
@@ -67,7 +71,7 @@ The ldc2 in build/ldc/bin can also target x86 and x86_64.  This is for eventual 
 - objc_helloD - demo of how an Objective-C (or C or C++) main can use D.
 
 ## Unittests
-An Xcode project called [unittester](https://github.com/smolt/ldc-iphone-dev/unittester) is included that has targets for running the druntime and phobos unittests.  Two are D only with output to the console (nothing to see on the iOS device besides a black screen).  The other two are simple scrolling text apps that show the D unittest output as it runs.  These apps manage the UI with Objective-C and run the D unittests in another thread.
+An Xcode project called [unittester](https://github.com/smolt/ldc-iphone-dev/tree/master/unittester) is included that has targets for running the druntime and phobos unittests.  Two are D only with output to the console (nothing to see on the iOS device besides a black screen).  The other two are simple scrolling text apps that show the D unittest output as it runs.  These apps manage the UI with Objective-C and run the D unittests in another thread.
 
 You can build and run the console druntime/phobos unittests from the shell.  Here I am running on my iPad mini (cortex-a9):
 
@@ -100,6 +104,8 @@ Passed 110 of 113 (5 have tailored tests), 60 other modules did not have tests
 Restoring FPU mode
 ```
 
+Note: that iOS by default runs with the ARM FPU "Default NaN" and "Flush to Zero" modes enabled.  In order to pass many of the math unittests, these modes are disabled first.  This is something to consider if you are doing some fancy math and expect full subnormal and NaN behavior.
+
 ### Unittest Status
 Most druntime and phobos unittests pass.  All except one are math
 related.
@@ -118,11 +124,20 @@ All the failures are marked in the druntime and phobos source with
 versions that begin with "WIP" to workaround the failure so rest of
 test can run.  Grep for "WIP" to see all the details.
 
-## What is Missing
+I think the only unittest failures to consider if using D in an iOS App would be the Fiber crash and possibly the acosh() if you are doing interesting math.
 
-- libcurl needs to built for iOS to enable std.net.curl
-- Run on iPhone Sim
-- Run on arm64 device
-- Objective-C interop
+## What is Missing
+Or what is left to do.
+
+- Make prebuilt binaries
+- Add libcurl to enable std.net.curl
+- Ability to run on iPhone Simulator
+- Ability run on arm64 devices - not tried yet
+- Make symbolic debugging work - there is some dwarf incompatability so debug builds don't have -g turned.  The debug libs are just non-optimized, non-release builds for now.
+- Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)
+- APIs for iPhone SDK - [DStep](https://github.com/jacob-carlborg/dstep) helps here
 - Build universal libs
-- Xcode support
+- Xcode/D integration - needs someone who loves working with Xcode
+- A D-based iOS App submitted to Apple App Store
+- A D-based iOS App accepted by the Apple App Store!
+- Figure out what else is left to do
