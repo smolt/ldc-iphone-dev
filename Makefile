@@ -13,14 +13,17 @@ distclean:
 	-rm -Rf build
 	$(MAKE) -C iphoneos-apple-support clean
 
-unittest: unittest-release unittest-debug
-
-unittest-release: all
-	$(MAKE) -C build/ldc druntime-ldc-unittest phobos2-ldc-unittest
+unittest: unittest-debug unittest-release
 
 unittest-debug: all
 	$(MAKE) -C build/ldc druntime-ldc-unittest-debug phobos2-ldc-unittest-debug
+	tools/collect-unittests debug build
 
+unittest-release: all
+	$(MAKE) -C build/ldc druntime-ldc-unittest phobos2-ldc-unittest
+	tools/collect-unittests release build
+
+.PHONY: all clean distclean unittest unittest-debug unittest-release
 
 # ldc submakes
 
@@ -35,6 +38,8 @@ build/ldc/Makefile: $(LLVM_CONFIG)
 # do submake in llvm if it doesn't appear to be built.  I assume llvm
 # won't be changing much and you can always do a direct make in the
 # subpackage if something changes (e.g. make llvm-all)
+
+.PHONY: support
 
 support: $(LLVM_CONFIG)
 	$(MAKE) -C iphoneos-apple-support
@@ -56,4 +61,14 @@ build/llvm/Makefile:
 	mkdir -p build/llvm
 	tools/prepmake-llvm
 
-.PHONY: all clean distclean unittest unittest-release unittest-debug support
+# emacs stuff
+
+.PHONY: etags
+
+etags:
+	cd llvm && etags `find include lib -name '*.[hc]' -o -name '*.cpp'`
+	cd llvm && if [ -d tools/clang ]; then \
+	    etags --append \
+	    `find tools/clang/{include,lib} -name '*.[hc]' -o -name '*.cpp'`; \
+	  fi
+	cd ldc && etags -i ../llvm/TAGS `find . -name '*.[hc]' -o -name '*.cpp'`
