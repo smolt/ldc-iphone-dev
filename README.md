@@ -1,11 +1,11 @@
 # ldc-iphone-dev
 An LDC (LLVM-base D Compiler) development sandbox for iPhone iOS.
 
-This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting iPhoneOS.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor test failures (see [Unittest Status](#Unittest-Status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.  In theory.
+This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting iPhoneOS.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor test failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.  In theory.
 
 Versions derived from: LDC 0.15.1 (DMD v2.066.1) and LLVM 3.5.1.
 
-There is still much left [to do](#What-is-Missing).
+There is still much left [to do](#what-is-missing).
 
 ## License 
 Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/blob/master/APPLE_LICENSE) in directory iphoneos-apple-support before using.  This subdirectory has some modified source code derived from http://www.opensource.apple.com that makes TLS work on iOS.  As I understand it, if you publish an app or source that uses that code, you need to follow the provisions of the license.
@@ -44,7 +44,7 @@ You can quickly try the resulting compiler yourself by typing:
 $ tools/iphoneos-ldc2 -c hello.d
 ```
 
-This only gives you a .o file, but using Xcode and a provisioning profile, you could link, codesign, bundle, install, and run it an iOS device.  A sample Xcode [project](#Sample-helloD-Project) does just that if you have a provisioning profile.
+This only gives you a .o file, but using Xcode and a provisioning profile, you could link, codesign, bundle, install, and run it an iOS device.  A sample Xcode [project](#sample-hellod-project) does just that if you have a provisioning profile.
 
 At this point, you have an LDC toolchain and druntime/phobos built for 32-bit armv7 iOS.  See `build/ldc/bin and build/ldc/lib`.  This ldc2 was configured to target all iOS devices from original iPhone (armv6) to iPhone 6 (arm64) but my only iOS devices are armv7, so that is the target I build libs for.  All iOS device from iPhone 3gs, iPod 3, AppleTV can run armv7 instructions, so that is not so bad.  The equivalent gcc or clang target is armv7-apple-darwin, but under the hood in LLVM it is really thumbv7-apple-ios with cortex-a8 selected to enable neon and vfp3.
 
