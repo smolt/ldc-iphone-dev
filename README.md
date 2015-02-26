@@ -5,7 +5,7 @@ This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various piec
 
 Versions derived from: LDC 0.15.1 (DMD v2.066.1) and LLVM 3.5.1.
 
-There is still much left [to do][What is Missing].
+There is still much left [to do](#What is Missing).
 
 ## License 
 Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/blob/master/APPLE_LICENSE) in directory iphoneos-apple-support before using.  This subdirectory has some modified source code derived from http://www.opensource.apple.com that makes TLS work on iOS.  As I understand it, if you publish an app or source that uses that code, you need to follow the provisions of the license.
