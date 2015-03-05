@@ -108,14 +108,14 @@ bool setupEnvAndRunTests()
         puts("FPU Flush to Zero and Default NaN disabled for tests");
         __asm("vmrs $0, fpscr\n"
               "bic $0, #(3 << 24)\n"
-              "vmsr fpscr, $0", "~r");
+              "vmsr fpscr, $0", "~{r0}");
         scope (exit)
         {
             puts("Restoring FPU mode");
             // restore flush to zero and default nan mode
             __asm("vmrs $0, fpscr\n"
                   "orr $0, #(3 << 24)\n"
-                  "vmsr fpscr, $0", "~r");
+                  "vmsr fpscr, $0", "~{r0}");
         }
     }
 
