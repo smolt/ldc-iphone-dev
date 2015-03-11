@@ -7,6 +7,10 @@ Versions derived from: LDC 0.15.1 (DMD v2.066.1) and LLVM 3.5.1.
 
 There is still stuff to [work on](#what-is-missing), but overall the core D language is ready to try on iOS.
 
+Beware of [ldc Issue #666](https://github.com/ldc-developers/ldc/issues/666).
+This bit me so I put a compile time message in core.thread as a
+reminder to not share Fiber instances between threads.
+
 ## License 
 Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/blob/master/APPLE_LICENSE) in directory iphoneos-apple-support before using.  This subdirectory has some modified source code derived from http://www.opensource.apple.com that makes TLS work on iOS.  As I understand it, if you publish an app or source that uses that code, you need to follow the provisions of the license.
 
@@ -48,7 +52,7 @@ $ tools/iphoneos-ldc2 -c hello.d
 
 This only gives you a .o file but using Xcode and a provisioning profile you could link, codesign, bundle, and run it on an iOS device.  A sample Xcode [project](#sample-hellod-project) does just that if you have a provisioning profile.
 
-At this point, you have an LDC toolchain and druntime/phobos built for 32-bit armv7 iOS in `build/ldc`.  This ldc2 is actually configured to target all iOS devices from original iPhone (armv6) to iPhone 6 (arm64).   My only iOS devices are armv7 so that is the only target being built.  Plus, all iOS device from iPhone 3gs, iPod 3, AppleTV and up can run armv7 instructions [(see Device Compatability)](https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html).  The equivalent gcc or clang target is armv7-apple-darwin, but under the hood in LLVM it is really thumbv7-apple-ios with cortex-a8 selected to enable neon and vfp3.
+At this point, you have an LDC toolchain and druntime/phobos built for 32-bit armv7 iOS in `build/ldc`.  This ldc2 is actually configured to target all iOS devices from original iPhone (armv6) to iPhone 6 (arm64).   My only iOS devices are armv7 so that is the only target being built.  Plus, all iOS device from iPhone 3gs, iPod 3, AppleTV and up can run armv7 instructions [(see Device Compatibility)](https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html).  The equivalent gcc or clang target is armv7-apple-darwin, but under the hood in LLVM it is really thumbv7-apple-ios with cortex-a8 selected to enable neon and vfp3.
 
 `iphoneos-ldc2` is nothing more than a script that does this:
 
@@ -107,7 +111,7 @@ Restoring FPU mode
 Note: that iOS by default runs with the ARM FPU "Default NaN" and "Flush to Zero" modes enabled.  In order to pass many of the math unittests, these modes are disabled first.  This is something to consider if you are doing some fancy math and expect full subnormal and NaN behavior.
 
 ### Unittest Status
-Most druntime and phobos unittests pass.  All except one are math
+Most druntime and phobos unittests pass with the exceptions being math
 related.
 
 - std.csv - a couple floating point off-by-one LSB differences
@@ -118,13 +122,13 @@ Some failures only occur with optimization on (-O1 or higher):
 
 - std.internal.math.errorfunction - erfc() NaN payload fails
 - std.math - acosh() not producing NaN in a couple cases
-- core.thread - a Fiber unittest crashes on multicore devices
 
 All the failures are marked in the druntime and phobos source with
 versions that begin with "WIP" to workaround the failure so rest of
 test can run.  Grep for "WIP" to see all the details.
 
-I think the only unittest failures to consider if using D in an iOS App would be the Fiber crash and possibly the acosh() if you are doing interesting math.
+As long as there is not a dependence on modules like std.internal.math.gammafunction or 
+the acosh(), perhaps things are good to go.
 
 ## What is Missing
 Or what is left to do.
@@ -133,7 +137,7 @@ Or what is left to do.
 - Add libcurl to enable std.net.curl
 - Ability to run on iPhone Simulator
 - Ability run on arm64 devices - not tried yet
-- Make symbolic debugging work - there is some dwarf incompatability so debug builds don't have -g turned.  The debug libs are just non-optimized, non-release builds for now.
+- Make symbolic debugging work - there is some dwarf incompatibility so debug builds don't have -g turned.  The debug libs are just non-optimized, non-release builds for now.
 - Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)
 - APIs for iPhone SDK - [DStep](https://github.com/jacob-carlborg/dstep) helps here
 - Build universal libs
