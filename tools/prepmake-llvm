@@ -8,5 +8,17 @@ topdir=`dirname $BASH_SOURCE[0]`/..
 cd $topdir/build/llvm &&
     ../../llvm/configure \
 	--enable-optimized --disable-assertions \
-	--enable-targets=arm,arm64,x86,x86_64 \
-	--target=armv7-apple-darwin
+	--enable-targets=arm,arm64,x86,x86_64
+
+#	--target=armv7-apple-darwin
+# could specify default target but at this stage need to specify
+# triple later anyway to have os set to ios.  At some point could
+# modify llvm configure to allow ios as option.
+
+# options
+# - take out enable-targets to build all.  compile is little longer,
+#   but not much and good for testing other target codegen
+#
+# - take out --enable-optimized and --disable-assertions to get a self
+#   checking debuggable version. Good for when trying new stuff, but
+#   compile time is slow
