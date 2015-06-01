@@ -546,6 +546,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = settings/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build,
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -584,6 +590,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = settings/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					../build,
+					../build/ldc/lib,
+					"../iphoneos-apple-support",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -597,12 +609,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/dan/projects/ldc-iphone-dev/build",
-					"/Users/dan/projects/ldc-iphone-dev/build/ldc/lib",
-					"/Users/dan/projects/ldc-iphone-dev/iphoneos-apple-support",
-				);
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../build/unittests-debug",
@@ -616,12 +622,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/dan/projects/ldc-iphone-dev/build",
-					"/Users/dan/projects/ldc-iphone-dev/build/ldc/lib",
-					"/Users/dan/projects/ldc-iphone-dev/iphoneos-apple-support",
-				);
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../build/unittests-debug",
@@ -636,12 +636,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/dan/projects/ldc-iphone-dev/build",
-					"/Users/dan/projects/ldc-iphone-dev/build/ldc/lib",
-					"/Users/dan/projects/ldc-iphone-dev/iphoneos-apple-support",
-				);
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../build/unittests-debug",
@@ -656,12 +650,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/dan/projects/ldc-iphone-dev/build",
-					"/Users/dan/projects/ldc-iphone-dev/build/ldc/lib",
-					"/Users/dan/projects/ldc-iphone-dev/iphoneos-apple-support",
-				);
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../build/unittests-debug",
@@ -709,12 +697,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/dan/projects/ldc-iphone-dev/build",
-					"/Users/dan/projects/ldc-iphone-dev/build/ldc/lib",
-					"/Users/dan/projects/ldc-iphone-dev/iphoneos-apple-support",
-				);
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../build/unittests-release",
@@ -728,12 +710,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/dan/projects/ldc-iphone-dev/build",
-					"/Users/dan/projects/ldc-iphone-dev/build/ldc/lib",
-					"/Users/dan/projects/ldc-iphone-dev/iphoneos-apple-support",
-				);
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../build/unittests-release",
@@ -748,12 +724,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/dan/projects/ldc-iphone-dev/build",
-					"/Users/dan/projects/ldc-iphone-dev/build/ldc/lib",
-					"/Users/dan/projects/ldc-iphone-dev/iphoneos-apple-support",
-				);
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../build/unittests-release",
@@ -768,12 +738,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/dan/projects/ldc-iphone-dev/build",
-					"/Users/dan/projects/ldc-iphone-dev/build/ldc/lib",
-					"/Users/dan/projects/ldc-iphone-dev/iphoneos-apple-support",
-				);
 				OTHER_LDFLAGS = (
 					"-filelist",
 					"../build/unittests-release",
