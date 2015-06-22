@@ -7,17 +7,13 @@ Versions derived from: LDC 0.15.1 (DMD v2.066.1) and LLVM 3.5.1.
 
 There is still stuff to [work on](#what-is-missing), but overall the core D language is ready to try on iOS.
 
-Beware of [ldc Issue #666](https://github.com/ldc-developers/ldc/issues/666).
-This bit me so I put a compile time message in core.thread as a
-reminder to not share Fiber instances between threads.
-
 ## License 
 Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/blob/master/APPLE_LICENSE) in directory iphoneos-apple-support before using.  This subdirectory has some modified source code derived from http://www.opensource.apple.com that makes TLS work on iOS.  As I understand it, if you publish an app or source that uses that code, you need to follow the provisions of the license.
 
 LLVM also has its [LICENSE.TXT](https://github.com/smolt/llvm/blob/ios/LICENSE.TXT) and LDC its combined [LICENSE](https://github.com/smolt/ldc/blob/ios/LICENSE).
 
 ## Prerequisites
-You will need an OS X host and Xcode.  I am currently on Mavericks 10.9 and Xcode 6.1.1.
+You will need an OS X host and Xcode.  I am currently on Yosemite 10.10.3 and Xcode 6.3.2.
 
 The prerequisite packages are pretty much the same as listed for [building LDC](http://wiki.dlang.org/Building_LDC_from_source) with my comments in parentheses:
 
@@ -29,7 +25,9 @@ The prerequisite packages are pretty much the same as listed for [building LDC](
 
 LLVM is included as a submodule since it has been modified to support TLS on iOS.  No other LLVM will work.
 
-To really have fun, you will need some way to run on an iOS device. Membership in the iOS Developer Program is one way to do it.
+To really have fun, you will need an iOS device.  There is also news
+that with Xcode 7 you can download to your own devices without
+enrolling in the Developer Program.
 
 ## Build
 Download with git and build:
@@ -43,6 +41,13 @@ $ tools/build-all
 and grab a cup of coffee.  It will build LLMV, LDC, druntime, phobos,
 and iphone-apple-support.  LLVM takes the longest by far, but probably
 only needs to be built once.  The shell script `build-all` may eventually do some nice checking, but for now mostly just calls `make -j n` where `n` is all your cores but one.
+
+If updating an existing clone and want a clean rebuild, do something like:
+
+```
+$ git submodule update --init --recursive
+$ tools/build-all -f
+```
 
 You can quickly try the resulting compiler yourself by typing:
 
@@ -91,7 +96,7 @@ Testing 3 core.checkedint: OK (took 0ms)
 Testing 4 core.demangle: OK (took 17ms)
 ...
 Testing 113 std.zlib: OK (took 96ms)
-Passed 112 of 113 (4 have tailored tests), 60 other modules did not have tests
+Passed 112 of 113 (3 have tailored tests), 60 other modules did not have tests
 Restoring FPU mode
 
 $ xcodebuild -project unittester/unittester.xcodeproj -destination "platform=iOS,name=Dan's iPad" test -scheme release
@@ -104,33 +109,22 @@ Testing 3 core.checkedint: OK (took 0ms)
 Testing 4 core.demangle: OK (took 10ms)
 ...
 Testing 113 std.zlib: OK (took 92ms)
-Passed 110 of 113 (5 have tailored tests), 60 other modules did not have tests
+Passed 112 of 113 (3 have tailored tests), 60 other modules did not have tests
 Restoring FPU mode
 ```
 
 Note: that iOS by default runs with the ARM FPU "Default NaN" and "Flush to Zero" modes enabled.  In order to pass many of the math unittests, these modes are disabled first.  This is something to consider if you are doing some fancy math and expect full subnormal and NaN behavior.
 
 ### Unittest Status
-(Update 5/31/2015 - most of these will be fixed when latest changes from LDC are merged in)
-
 Most druntime and phobos unittests pass with the exceptions being math
 related.
 
-- std.csv - a couple floating point off-by-one LSB differences
 - std.internal.math.gammafunction - needs update for 64-bit reals
 - std.math - floating point off-by-one LSB error in a few cases
-
-Some failures only occur with optimization on (-O1 or higher):
-
-- std.internal.math.errorfunction - erfc() NaN payload fails
-- std.math - acosh() not producing NaN in a couple cases
 
 All the failures are marked in the druntime and phobos source with
 versions that begin with "WIP" to workaround the failure so rest of
 test can run.  Grep for "WIP" to see all the details.
-
-As long as there is not a dependence on modules like std.internal.math.gammafunction or 
-the acosh(), perhaps things are good to go.
 
 ## What is Missing
 Or what is left to do.
@@ -139,7 +133,7 @@ In work now:
 - Make prebuilt binaries
 - Ability to run on iPhone Simulator
 - Build universal libs (support sim and device in one lib)
-- Make symbolic debugging work better - this is much improve since Xcode 6.3.1.
+- Make symbolic debugging work better - this is much improved since Xcode 6.3.1.
 - Update to future release LDC 0.16.0 (DMD FE 2.067)
 
 Back burner
