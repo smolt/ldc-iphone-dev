@@ -29,8 +29,9 @@ source $topdir/tools/flags
 dflags_cmake=`echo $dflags|tr -s ' ' ';'`
 
 # What's with all these flags?
-# -DUSE_REAL64 tells LDC to use a 64-bit real (like double) The D
-# versions are to support troubleshooting issues detected by unittest.
+# -DUSE_OSX_TARGET_REAL compiles in code to use target's native real type
+#
+# The D versions are to support troubleshooting issues detected by unittest.
 #
 # WIP_FloatPrecIssue - work in progress for some floating point
 #   precision problems
@@ -53,9 +54,9 @@ dflags_cmake=`echo $dflags|tr -s ' ' ';'`
 
 cd $topdir/build/ldc && cmake \
 -DLLVM_ROOT_DIR=$llvmdir \
--DCMAKE_CXX_FLAGS='-DUSE_REAL64' \
+-DCMAKE_CXX_FLAGS='-DUSE_OSX_TARGET_REAL' \
 -DD_FLAGS="-w;-d;$dflags_cmake;-d-version=WIP_FloatPrecIssue" \
--DD_FLAGS_DEBUG='' \
--DD_FLAGS_RELEASE='-O3;-release;-mattr=-neon;-d-version=WIP_FiberIssue;-d-version=WIP_FloatOptimizeIssue' \
+-DD_FLAGS_DEBUG='-g' \
+-DD_FLAGS_RELEASE='-O3;-release;-mattr=-neon' \
 -DTARGET_C_FLAGS="$cflags -isysroot $iphonesdk" \
 ../../ldc
