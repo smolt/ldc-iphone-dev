@@ -111,6 +111,8 @@ Restoring FPU mode
 Note: that iOS by default runs with the ARM FPU "Default NaN" and "Flush to Zero" modes enabled.  In order to pass many of the math unittests, these modes are disabled first.  This is something to consider if you are doing some fancy math and expect full subnormal and NaN behavior.
 
 ### Unittest Status
+(Update 5/31/2015 - most of these will be fixed when latest changes from LDC are merged in)
+
 Most druntime and phobos unittests pass with the exceptions being math
 related.
 
@@ -133,15 +135,19 @@ the acosh(), perhaps things are good to go.
 ## What is Missing
 Or what is left to do.
 
+In work now:
 - Make prebuilt binaries
-- Add libcurl to enable std.net.curl
 - Ability to run on iPhone Simulator
+- Build universal libs (support sim and device in one lib)
+- Make symbolic debugging work better - this is much improve since Xcode 6.3.1.
+- Update to future release LDC 0.16.0 (DMD FE 2.067)
+
+Back burner
+- Add libcurl to enable std.net.curl
+- Xcode/D integration - needs someone who loves working with Xcode
 - Ability run on arm64 devices - not tried yet
-- Make symbolic debugging work - there is some dwarf incompatibility so debug builds don't have -g turned.  The debug libs are just non-optimized, non-release builds for now.
 - Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)
 - APIs for iPhone SDK - [DStep](https://github.com/jacob-carlborg/dstep) helps here
-- Build universal libs
-- Xcode/D integration - needs someone who loves working with Xcode
 - A D-based iOS App submitted to Apple App Store
 - A D-based iOS App accepted by the Apple App Store!
 - Figure out what else is left to do
