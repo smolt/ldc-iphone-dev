@@ -13,6 +13,8 @@ case $0 in
     *-ldmd2) prog=ldmd2;;
 esac
 
+[ "$DEBUGGING_SYMBOLS" = YES ] && args="-g"
+
 for arg in "$@"; do
     case $arg in
 	*-mtriple*) triple=;;
@@ -29,5 +31,5 @@ if [ ! -x "$progpath" ]; then
 fi
 
 cmd="$progpath $triple $cpu"
-[ "$verbose" ] && echo $cmd "$@"
-$cmd "$@"
+[ "$verbose" ] && echo $cmd $args "$@"
+$cmd $args "$@"
