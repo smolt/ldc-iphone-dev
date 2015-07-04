@@ -1,6 +1,6 @@
 #!/bin/bash
 # Little frontend until ldc2 is updated with proper defaults for
-# iPhoneOS.  Really all this is doing is defaulting -mtriple and -mcpu
+# iPhoneOS.  Really all this is doing is defaulting -mtriple
 # to values in tools/flag.
 
 tooldir=`dirname $BASH_SOURCE[0]`
@@ -18,7 +18,6 @@ esac
 for arg in "$@"; do
     case $arg in
 	*-mtriple*) triple=;;
-	*-mcpu*) cpu=;;
 	-v|-vv) verbose=1;;
     esac
 done
@@ -30,6 +29,6 @@ if [ ! -x "$progpath" ]; then
     exit 1
 fi
 
-cmd="$progpath $triple $cpu"
+cmd="$progpath $triple"
 [ "$verbose" ] && echo $cmd $args "$@"
 $cmd $args "$@"

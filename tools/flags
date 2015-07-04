@@ -6,10 +6,9 @@
 # device pretty much still in use.
 
 triple='-mtriple=thumbv7-apple-ios5'
-cpu='-mcpu=cortex-a8'
-dflags="$triple $cpu"
+dflags="$triple"
 
-# equiv C flags.  I think iphonesdk clang pretty much assumes all this if
-# you just say -arm armv7, but not absolutely certain
+# equiv C flags.  iphonesdk clang assumes all this if
+# you just say -arm armv7
 
-cflags='-target armv7-apple-darwin -mcpu=cortex-a8'
+cflags='-arch armv7'
