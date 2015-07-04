@@ -28,13 +28,13 @@
 		3781D8DF1A9B0A6600B2C8E6 /* libphobos2-ldc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8671A9AD0DF00B2C8E6 /* libphobos2-ldc.a */; };
 		3781D8E01A9B0A6600B2C8E6 /* libdruntime-ldc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8691A9AD0DF00B2C8E6 /* libdruntime-ldc.a */; };
 		3781D8E31A9B0BD600B2C8E6 /* unittest.d in Sources */ = {isa = PBXBuildFile; fileRef = 3781D8731A9AD27800B2C8E6 /* unittest.d */; };
-		3781D8E51A9B0BD600B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8681A9AD0DF00B2C8E6 /* libphobos2-ldc-debug.a */; };
-		3781D8E61A9B0BD600B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D86A1A9AD0DF00B2C8E6 /* libdruntime-ldc-debug.a */; };
-		3781D8E71A9B0BD600B2C8E6 /* libunittest-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8661A9AD0DF00B2C8E6 /* libunittest-debug.a */; };
 		3781D8E81A9B0BD600B2C8E6 /* libiphoneossup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8711A9AD12900B2C8E6 /* libiphoneossup.a */; };
 		3781D8EA1A9B0BD600B2C8E6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3781D8C81A9B005E00B2C8E6 /* Default-568h@2x.png */; };
 		3781D9031A9B0FEE00B2C8E6 /* xctest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781D9011A9B0FA600B2C8E6 /* xctest-dummy.m */; };
 		3781D9041A9B11CA00B2C8E6 /* xctest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781D9011A9B0FA600B2C8E6 /* xctest-dummy.m */; };
+		37FC719C1B38F625007E01E0 /* libunittest-release.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8651A9AD0DF00B2C8E6 /* libunittest-release.a */; };
+		37FC719D1B38F625007E01E0 /* libphobos2-ldc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8671A9AD0DF00B2C8E6 /* libphobos2-ldc.a */; };
+		37FC719E1B38F625007E01E0 /* libdruntime-ldc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8691A9AD0DF00B2C8E6 /* libdruntime-ldc.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -172,10 +172,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3781D8E51A9B0BD600B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */,
-				3781D8E61A9B0BD600B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */,
-				3781D8E71A9B0BD600B2C8E6 /* libunittest-debug.a in Frameworks */,
 				3781D8E81A9B0BD600B2C8E6 /* libiphoneossup.a in Frameworks */,
+				37FC719D1B38F625007E01E0 /* libphobos2-ldc.a in Frameworks */,
+				37FC719C1B38F625007E01E0 /* libunittest-release.a in Frameworks */,
+				37FC719E1B38F625007E01E0 /* libdruntime-ldc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
