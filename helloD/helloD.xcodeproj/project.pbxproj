@@ -37,7 +37,7 @@
 			outputFiles = (
 				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o",
 			);
-			script = "../tools/iphoneos-ldc2 -v -O${OPTIMIZATION_LEVEL} -c -od=\"${DERIVED_FILES_DIR}\" \"${INPUT_FILE_PATH}\"";
+			script = "../tools/xc-iphoneos-dc -v";
 		};
 		37FF99AC1A91956E00098723 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -49,7 +49,7 @@
 			outputFiles = (
 				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o",
 			);
-			script = "../tools/iphoneos-ldc2 -v -g -O${OPTIMIZATION_LEVEL} -c -od=\"${DERIVED_FILES_DIR}\" \"${INPUT_FILE_PATH}\"";
+			script = "../tools/xc-iphoneos-dc -v";
 		};
 		37FF99C41A91988600098723 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -61,7 +61,7 @@
 			outputFiles = (
 				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o",
 			);
-			script = "../tools/iphoneos-ldc2 -v -O${OPTIMIZATION_LEVEL} -c -od=\"${DERIVED_FILES_DIR}\" \"${INPUT_FILE_PATH}\"";
+			script = "../tools/xc-iphoneos-dc -v";
 		};
 		37FF99D71A91CE8100098723 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -73,7 +73,7 @@
 			outputFiles = (
 				"${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o",
 			);
-			script = "../tools/iphoneos-ldc2 -v -O${OPTIMIZATION_LEVEL} -c -od=\"${DERIVED_FILES_DIR}\" \"${INPUT_FILE_PATH}\"";
+			script = "../tools/xc-iphoneos-dc -v";
 		};
 /* End PBXBuildRule section */
 
@@ -404,9 +404,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -441,10 +440,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

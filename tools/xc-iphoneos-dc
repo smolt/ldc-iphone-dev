@@ -1,0 +1,48 @@
+#!/bin/bash
+# Wrapper for iphoneos-ldc2 that converts Xcode Custom Build Rule
+# script environment into command line switches.
+#
+# Output Files should be:
+#   ${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.o
+
+# this script is expected to be alongside iphoneos-ldc2
+dir=`dirname $BASH_SOURCE[0]`
+bindir=`cd $dir; pwd`
+ldc=iphoneos-ldc2
+
+# Find the compiler, hopefully right next door
+if [ ! -x "$bindir/$ldc" ]; then
+    echo >&2 "can't find $ldc in $bindir"
+    exit 1
+fi
+
+for arg in "$@"; do
+    case $arg in
+	-arch) have_arch=1;;
+	-c) have_c=1;;
+	-O*) have_O=1;;
+	-g*) have_g=1;;
+	-od*) have_od=1;;
+	-of*) have_of=1;;
+	-v|-vv) verbose=1;;
+	*.d) have_dsrc=1;;
+    esac
+done
+
+args="$bindir/$ldc"
+[ -z "$have_arch" -a "$arch" ] &&
+    args="$args -arch $arch"
+[ -z "$have_c" ] &&
+    args="$args -c"
+[ -z "$have_O" -a "$OPTIMIZATION_LEVEL" ] &&
+    args="$args -O$OPTIMIZATION_LEVEL"
+[ -z "$have_g" -a "$DEBUGGING_SYMBOLS" = YES ] &&
+    args="$args -g"
+[ -z "$have_od" -a -d "$DERIVED_FILES_DIR" ] &&
+    args="$args -od='$DERIVED_FILES_DIR'"
+[ -z "$have_dsrc" -a -f "$INPUT_FILE_PATH" ] &&
+    args="$args '$INPUT_FILE_PATH'"
+
+eval set $args "$@"
+[ "$verbose" ] && echo "$@"
+exec "$@"

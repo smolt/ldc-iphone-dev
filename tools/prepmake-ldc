@@ -1,6 +1,6 @@
 #!/bin/bash
-# configure to build LDC for iPhoneOS armv7 (iPhone 4 and later 32-bit stuff)
-# assumes LLVM is already built
+# Configure to build LDC with universal libs (druntime/phobos) for
+# iPhoneOS 32-bit archtectures.  Assumes LLVM is already built
 
 # top dir is one up from this script's dir
 topdir=`dirname $BASH_SOURCE[0]`/..
@@ -8,6 +8,7 @@ topdir=`dirname $BASH_SOURCE[0]`/..
 # LLVM_ROOT_DIR must be an absolute path for some reason
 absolute=`cd $topdir; pwd`
 llvmdir="$absolute/build/llvm/Release/"
+installdir="$absolute/build/install"
 
 if [ ! -d "$llvmdir" ]; then
     echo "Missing $llvmdir"
@@ -15,30 +16,16 @@ if [ ! -d "$llvmdir" ]; then
     exit 1
 fi
 
-# Need Xcode with the iPhoneOS SDK
-iphonesdk=`xcrun --sdk iphoneos --show-sdk-path`
-
-if [ -z "$iphonesdk" ]; then
-    echo "Missing iPhoneOS SDK, can't build C code in druntime/phobos"
-    exit 1
-fi
-
-# get cflags, dflags.
-# cmake needs dflags to be separated by ';' instead of spaces, so xlate
-source $topdir/tools/flags
-dflags_cmake=`echo $dflags|tr -s ' ' ';'`
-
-# What's with all these flags?
-# -DUSE_OSX_TARGET_REAL compiles in code to use target's native real type
-#
 # The D versions are to support troubleshooting issues detected by unittest.
 #
 # WIP_FloatPrecIssue - work in progress for some floating point
 #   precision problems
 
-cd $topdir/build/ldc && cmake \
--DLLVM_ROOT_DIR=$llvmdir \
--DCMAKE_CXX_FLAGS='-DUSE_OSX_TARGET_REAL' \
--DD_FLAGS="-w;-d;$dflags_cmake;-d-version=WIP_FloatPrecIssue" \
--DTARGET_C_FLAGS="$cflags -isysroot $iphonesdk" \
-../../ldc
+cd $topdir/build/ldc &&
+    cmake -DLLVM_ROOT_DIR=$llvmdir \
+	  -DIPHONEOS_ARCHS='all' \
+	  -DPROGRAM_PREFIX=iphoneos- \
+	  -DCMAKE_INSTALL_PREFIX=$installdir \
+	  -DINCLUDE_INSTALL_DIR=$installdir/import ../../ldc
+
+

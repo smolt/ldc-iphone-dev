@@ -49,27 +49,39 @@ $ git submodule update --init --recursive
 $ tools/build-all -f
 ```
 
-You can quickly try the resulting compiler yourself by typing:
+You can quickly try the resulting compiler to generate armv7 code by typing:
 
 ```
-$ tools/iphoneos-ldc2 -c hello.d
+$ tools/iphoneos-ldc2 -arch armv7 -c hello.d
 ```
 
 This only gives you a .o file but using Xcode and a provisioning profile you could link, codesign, bundle, and run it on an iOS device.  A sample Xcode [project](#sample-hellod-project) does just that if you have a provisioning profile.
+Without a provisioning profile, you can still try out D with the iOS Simulator.
 
-At this point, you have an LDC toolchain and druntime/phobos built for 32-bit armv7 iOS in `build/ldc`.  This ldc2 is actually configured to target all iOS devices from original iPhone (armv6) to iPhone 6 (arm64).   My only iOS devices are armv7 so that is the only target being built.  Plus, all iOS device from iPhone 3gs, iPod 3, AppleTV and up can run armv7 instructions [(see Device Compatibility)](https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html).  The equivalent gcc or clang target is armv7-apple-darwin, but under the hood in LLVM it is really thumbv7-apple-ios with cortex-a8 selected to enable neon and vfp3.
-
-`iphoneos-ldc2` is nothing more than a script that does this:
+To generate code for the iOS Simulator, just change the `-arch`
+option:
 
 ```
-$ build/ldc/bin/ldc2 -mtriple=thumbv7-apple-ios5 -mcpu=cortex-a8 -c hello.d
+$ tools/iphoneos-ldc2 -arch i386 -c hello.d
 ```
 
-This script makes it easy to manage compiler defaults.  Clang presets many options when compiling for iOS based on the -arch switch but these presets are not in ldc2 main yet.  For now I think it is easier to tweak options with the iphoneos-ldc2 script.  Eventually ldc2 will be taught the iOS clang preset options for each iOS arch: armv6, armv7, armv7s, and arm64.
+Note that if you don't specify `-arch`, the default target is now the i386
+iOS Simulator (used to be armv7).
 
-The ldc2 in build/ldc/bin can also target x86 and x86_64.  This is for eventual use of the iPhone Simulator.  Unfortunately you cannot run LDC compiled source on iPhone Sim yet because ld refuses to link files with OS X thread local variables when targeting iPhone Sim.  I assume this is just to prevent running code on the sim that cannot run in iOS.  I think we can get around this by using our own ld or using a different TLS approach that ld won't detect.
+At this point, you have an LDC toolchain and universal druntime/phobos libs
+in `build/ldc` for 32-bit armv7, armv7s (iPhone 3gs to iPhone 5c),
+and i386 iOS Simulator.  The compiler can also target armv6 target
+(original iPhone and other older devices), but it is left out of the
+universal libs to speed build time.  Missing is arm64 for iPhone 6 and iPhone 5s, although
+these 64-bit devices can run 32-bit instructions too.  For more
+information
+[see Device Compatibility](https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html).
 
-More will eventually be added to tools.  It is could be useful to add tools to your PATH.
+My only hardware is armv7 so that is all I can really test for the moment.
+
+`tools/iphoneos-ldc2` is nothing more than a script that redirects to what
+is built in `build/ldc/bin/iphoneos-ldc2`.  The binaries have a
+`iphoneos-` prefix to remind you that the defaut target is iPhoneOS.
 
 ## Sample helloD Project
 [helloD](https://github.com/smolt/ldc-iphone-dev/tree/master/helloD) is a barebones Xcode project with four simple targets.  It only uses the console to demonstrate LDC compiled code running on an iOS device.
@@ -81,6 +93,9 @@ More will eventually be added to tools.  It is could be useful to add tools to y
 
 ## Unittests
 An Xcode project called [unittester](https://github.com/smolt/ldc-iphone-dev/tree/master/unittester) is included that has targets for running the druntime and phobos unittests.  Two are D only with output to the console (nothing to see on the iOS device besides a black screen).  The other two are simple scrolling text apps that show the D unittest output as it runs.  These apps manage the UI with Objective-C and run the D unittests in another thread.
+
+*Note: the following instructions for running unittests are out-of-date
+with latest change to build universal libs.  Update in process*
 
 You can build and run the console druntime/phobos unittests from the shell.  Here I am running on my iPad mini (cortex-a9):
 
@@ -131,8 +146,7 @@ Or what is left to do.
 
 In work now:
 - Make prebuilt binaries
-- Ability to run on iPhone Simulator
-- Build universal libs (support sim and device in one lib)
+- Get arm64 target working
 - Make symbolic debugging work better - this is much improved since Xcode 6.3.1.
 - Update to future release LDC 0.16.0 (DMD FE 2.067)
 

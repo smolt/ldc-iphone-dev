@@ -1,34 +1,23 @@
 #!/bin/bash
-# Little frontend until ldc2 is updated with proper defaults for
-# iPhoneOS.  Really all this is doing is defaulting -mtriple
-# to values in tools/flag.
+# Redirect to ldc2 in build/ldc/bin.  Tries with and without iphoneos-
+# prefix.
 
 tooldir=`dirname $BASH_SOURCE[0]`
 topdir=`cd $tooldir/..; pwd`
-
-source $tooldir/flags		# default dflags
 
 case $0 in
     *-ldc2) prog=ldc2;;
     *-ldmd2) prog=ldmd2;;
 esac
 
-[ "$DEBUGGING_SYMBOLS" = YES ] && args="-g"
-
-for arg in "$@"; do
-    case $arg in
-	*-mtriple*) triple=;;
-	-v|-vv) verbose=1;;
-    esac
-done
-
-progpath="$topdir/build/ldc/bin/$prog"
-
-if [ ! -x "$progpath" ]; then
-    echo >&2 "$progpath does not seem to be built yet"
+path="$topdir/build/ldc/bin"
+if [ -x "$path/$prog" ]; then
+    progpath="$path/$prog"
+elif [ -x "$path/iphoneos-$prog" ]; then
+    progpath="$path/iphoneos-$prog"
+else    
+    echo >&2 "$prog or iphoneos-$prog do not seem to be built yet"
     exit 1
 fi
 
-cmd="$progpath $triple"
-[ "$verbose" ] && echo $cmd $args "$@"
-$cmd $args "$@"
+exec $progpath "$@"
