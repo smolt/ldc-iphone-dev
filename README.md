@@ -135,7 +135,7 @@ Most druntime and phobos unittests pass with the exceptions being math
 related.
 
 - std.internal.math.gammafunction - needs update for 64-bit reals
-- std.math - floating point off-by-one LSB error in a few cases
+- std.math - floating point off-by-one LSB error in a few cases (I think this is a don't care)
 
 All the failures are marked in the druntime and phobos source with
 versions that begin with "WIP" to workaround the failure so rest of
@@ -145,17 +145,16 @@ test can run.  Grep for "WIP" to see all the details.
 Or what is left to do.
 
 In work now:
-- Make prebuilt binaries
 - Get arm64 target working
-- Make symbolic debugging work better - this is much improved since Xcode 6.3.1.
+- Xcode/D integration (could use someone who loves working with Xcode plugins)
 - Update to future release LDC 0.16.0 (DMD FE 2.067)
 
 Back burner
 - Add libcurl to enable std.net.curl
-- Xcode/D integration - needs someone who loves working with Xcode
-- Ability run on arm64 devices - not tried yet
+- Fix extern(C) ABI for small struct return values
 - Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)
 - APIs for iPhone SDK - [DStep](https://github.com/jacob-carlborg/dstep) helps here
 - A D-based iOS App submitted to Apple App Store
 - A D-based iOS App accepted by the Apple App Store!
+- Hack lldb to understand D symbols and types so debugging is better
 - Figure out what else is left to do
