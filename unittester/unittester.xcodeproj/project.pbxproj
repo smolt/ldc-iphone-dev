@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3781D86C1A9AD0DF00B2C8E6 /* libunittest-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8661A9AD0DF00B2C8E6 /* libunittest-debug.a */; };
 		3781D86E1A9AD0E000B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8681A9AD0DF00B2C8E6 /* libphobos2-ldc-debug.a */; };
 		3781D8701A9AD0E000B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D86A1A9AD0DF00B2C8E6 /* libdruntime-ldc-debug.a */; };
 		3781D8721A9AD12900B2C8E6 /* libiphoneossup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8711A9AD12900B2C8E6 /* libiphoneossup.a */; };
@@ -15,7 +14,6 @@
 		3781D8A01A9AE0CE00B2C8E6 /* unittest.d in Sources */ = {isa = PBXBuildFile; fileRef = 3781D8731A9AD27800B2C8E6 /* unittest.d */; };
 		3781D8A21A9AE0CE00B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8681A9AD0DF00B2C8E6 /* libphobos2-ldc-debug.a */; };
 		3781D8A31A9AE0CE00B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D86A1A9AD0DF00B2C8E6 /* libdruntime-ldc-debug.a */; };
-		3781D8A41A9AE0CE00B2C8E6 /* libunittest-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8661A9AD0DF00B2C8E6 /* libunittest-debug.a */; };
 		3781D8A51A9AE0CE00B2C8E6 /* libiphoneossup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8711A9AD12900B2C8E6 /* libiphoneossup.a */; };
 		3781D8AF1A9AE10200B2C8E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781D8401A9A4AD900B2C8E6 /* main.m */; };
 		3781D8C91A9B005E00B2C8E6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3781D8C81A9B005E00B2C8E6 /* Default-568h@2x.png */; };
@@ -24,7 +22,6 @@
 		3781D8D01A9B09D500B2C8E6 /* unittest.d in Sources */ = {isa = PBXBuildFile; fileRef = 3781D8731A9AD27800B2C8E6 /* unittest.d */; };
 		3781D8D51A9B09D500B2C8E6 /* libiphoneossup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8711A9AD12900B2C8E6 /* libiphoneossup.a */; };
 		3781D8D71A9B09D500B2C8E6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3781D8C81A9B005E00B2C8E6 /* Default-568h@2x.png */; };
-		3781D8DE1A9B0A6600B2C8E6 /* libunittest-release.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8651A9AD0DF00B2C8E6 /* libunittest-release.a */; };
 		3781D8DF1A9B0A6600B2C8E6 /* libphobos2-ldc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8671A9AD0DF00B2C8E6 /* libphobos2-ldc.a */; };
 		3781D8E01A9B0A6600B2C8E6 /* libdruntime-ldc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8691A9AD0DF00B2C8E6 /* libdruntime-ldc.a */; };
 		3781D8E31A9B0BD600B2C8E6 /* unittest.d in Sources */ = {isa = PBXBuildFile; fileRef = 3781D8731A9AD27800B2C8E6 /* unittest.d */; };
@@ -32,7 +29,10 @@
 		3781D8EA1A9B0BD600B2C8E6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3781D8C81A9B005E00B2C8E6 /* Default-568h@2x.png */; };
 		3781D9031A9B0FEE00B2C8E6 /* xctest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781D9011A9B0FA600B2C8E6 /* xctest-dummy.m */; };
 		3781D9041A9B11CA00B2C8E6 /* xctest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3781D9011A9B0FA600B2C8E6 /* xctest-dummy.m */; };
-		37FC719C1B38F625007E01E0 /* libunittest-release.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8651A9AD0DF00B2C8E6 /* libunittest-release.a */; };
+		37EE116B1B620AF9005280D0 /* unittest_config_debug.d in Sources */ = {isa = PBXBuildFile; fileRef = 37EE116A1B620AF9005280D0 /* unittest_config_debug.d */; };
+		37EE116C1B620AF9005280D0 /* unittest_config_debug.d in Sources */ = {isa = PBXBuildFile; fileRef = 37EE116A1B620AF9005280D0 /* unittest_config_debug.d */; };
+		37EE116E1B620B0F005280D0 /* unittest_config_release.d in Sources */ = {isa = PBXBuildFile; fileRef = 37EE116D1B620B0F005280D0 /* unittest_config_release.d */; };
+		37EE116F1B620B0F005280D0 /* unittest_config_release.d in Sources */ = {isa = PBXBuildFile; fileRef = 37EE116D1B620B0F005280D0 /* unittest_config_release.d */; };
 		37FC719D1B38F625007E01E0 /* libphobos2-ldc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8671A9AD0DF00B2C8E6 /* libphobos2-ldc.a */; };
 		37FC719E1B38F625007E01E0 /* libdruntime-ldc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8691A9AD0DF00B2C8E6 /* libdruntime-ldc.a */; };
 /* End PBXBuildFile section */
@@ -108,8 +108,6 @@
 /* Begin PBXFileReference section */
 		3781D83B1A9A4AD900B2C8E6 /* D Unit Dbg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "D Unit Dbg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3781D8401A9A4AD900B2C8E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3781D8651A9AD0DF00B2C8E6 /* libunittest-release.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libunittest-release.a"; path = "../build/libunittest-release.a"; sourceTree = "<group>"; };
-		3781D8661A9AD0DF00B2C8E6 /* libunittest-debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libunittest-debug.a"; path = "../build/libunittest-debug.a"; sourceTree = "<group>"; };
 		3781D8671A9AD0DF00B2C8E6 /* libphobos2-ldc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libphobos2-ldc.a"; path = "../build/ldc/lib/libphobos2-ldc.a"; sourceTree = "<group>"; };
 		3781D8681A9AD0DF00B2C8E6 /* libphobos2-ldc-debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libphobos2-ldc-debug.a"; path = "../build/ldc/lib/libphobos2-ldc-debug.a"; sourceTree = "<group>"; };
 		3781D8691A9AD0DF00B2C8E6 /* libdruntime-ldc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libdruntime-ldc.a"; path = "../build/ldc/lib/libdruntime-ldc.a"; sourceTree = "<group>"; };
@@ -125,6 +123,8 @@
 		3781D8EF1A9B0BD600B2C8E6 /* unittester-release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "unittester-release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3781D8F51A9B0D5D00B2C8E6 /* unittester-release Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "unittester-release Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3781D9011A9B0FA600B2C8E6 /* xctest-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "xctest-dummy.m"; sourceTree = SOURCE_ROOT; };
+		37EE116A1B620AF9005280D0 /* unittest_config_debug.d */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.dtrace; path = unittest_config_debug.d; sourceTree = "<group>"; };
+		37EE116D1B620B0F005280D0 /* unittest_config_release.d */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.dtrace; path = unittest_config_release.d; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +134,6 @@
 			files = (
 				3781D86E1A9AD0E000B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */,
 				3781D8701A9AD0E000B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */,
-				3781D86C1A9AD0DF00B2C8E6 /* libunittest-debug.a in Frameworks */,
 				3781D8721A9AD12900B2C8E6 /* libiphoneossup.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,7 +144,6 @@
 			files = (
 				3781D8A21A9AE0CE00B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */,
 				3781D8A31A9AE0CE00B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */,
-				3781D8A41A9AE0CE00B2C8E6 /* libunittest-debug.a in Frameworks */,
 				3781D8A51A9AE0CE00B2C8E6 /* libiphoneossup.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +160,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3781D8E01A9B0A6600B2C8E6 /* libdruntime-ldc.a in Frameworks */,
-				3781D8DE1A9B0A6600B2C8E6 /* libunittest-release.a in Frameworks */,
 				3781D8DF1A9B0A6600B2C8E6 /* libphobos2-ldc.a in Frameworks */,
 				3781D8D51A9B09D500B2C8E6 /* libiphoneossup.a in Frameworks */,
 			);
@@ -174,7 +171,6 @@
 			files = (
 				3781D8E81A9B0BD600B2C8E6 /* libiphoneossup.a in Frameworks */,
 				37FC719D1B38F625007E01E0 /* libphobos2-ldc.a in Frameworks */,
-				37FC719C1B38F625007E01E0 /* libunittest-release.a in Frameworks */,
 				37FC719E1B38F625007E01E0 /* libdruntime-ldc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				3781D8731A9AD27800B2C8E6 /* unittest.d */,
+				37EE116D1B620B0F005280D0 /* unittest_config_release.d */,
+				37EE116A1B620AF9005280D0 /* unittest_config_debug.d */,
 				3781D8401A9A4AD900B2C8E6 /* main.m */,
 				3781D9011A9B0FA600B2C8E6 /* xctest-dummy.m */,
 				3781D8BF1A9AEB1700B2C8E6 /* libs */,
@@ -217,10 +215,8 @@
 		3781D8BF1A9AEB1700B2C8E6 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				3781D8651A9AD0DF00B2C8E6 /* libunittest-release.a */,
 				3781D8671A9AD0DF00B2C8E6 /* libphobos2-ldc.a */,
 				3781D8691A9AD0DF00B2C8E6 /* libdruntime-ldc.a */,
-				3781D8661A9AD0DF00B2C8E6 /* libunittest-debug.a */,
 				3781D8681A9AD0DF00B2C8E6 /* libphobos2-ldc-debug.a */,
 				3781D86A1A9AD0DF00B2C8E6 /* libdruntime-ldc-debug.a */,
 				3781D8711A9AD12900B2C8E6 /* libiphoneossup.a */,
@@ -449,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3781D8AF1A9AE10200B2C8E6 /* main.m in Sources */,
+				37EE116B1B620AF9005280D0 /* unittest_config_debug.d in Sources */,
 				3781D8741A9AD27800B2C8E6 /* unittest.d in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37EE116C1B620AF9005280D0 /* unittest_config_debug.d in Sources */,
 				3781D8A01A9AE0CE00B2C8E6 /* unittest.d in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37EE116E1B620B0F005280D0 /* unittest_config_release.d in Sources */,
 				3781D8CF1A9B09D500B2C8E6 /* main.m in Sources */,
 				3781D8D01A9B09D500B2C8E6 /* unittest.d in Sources */,
 			);
@@ -482,6 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37EE116F1B620B0F005280D0 /* unittest_config_release.d in Sources */,
 				3781D8E31A9B0BD600B2C8E6 /* unittest.d in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +548,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					../build,
 					../build/ldc/lib,
 					"../iphoneos-apple-support",
 				);
@@ -592,7 +591,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					../build,
 					../build/ldc/lib,
 					"../iphoneos-apple-support",
 				);
@@ -610,8 +608,10 @@
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-filelist",
-					"../build/unittests-debug",
+					"-force_load",
+					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
+					"-force_load",
+					"../build/ldc/lib/libphobos2-ldc-unittest-debug.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -623,8 +623,10 @@
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-filelist",
-					"../build/unittests-debug",
+					"-force_load",
+					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
+					"-force_load",
+					"../build/ldc/lib/libphobos2-ldc-unittest-debug.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -637,8 +639,10 @@
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-filelist",
-					"../build/unittests-debug",
+					"-force_load",
+					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
+					"-force_load",
+					"../build/ldc/lib/libphobos2-ldc-unittest-debug.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -651,8 +655,10 @@
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-filelist",
-					"../build/unittests-debug",
+					"-force_load",
+					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
+					"-force_load",
+					"../build/ldc/lib/libphobos2-ldc-unittest-debug.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -698,8 +704,10 @@
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-filelist",
-					"../build/unittests-release",
+					"-force_load",
+					"../build/ldc/lib/libdruntime-ldc-unittest.a",
+					"-force_load",
+					"../build/ldc/lib/libphobos2-ldc-unittest.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -711,8 +719,10 @@
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-filelist",
-					"../build/unittests-release",
+					"-force_load",
+					"../build/ldc/lib/libdruntime-ldc-unittest.a",
+					"-force_load",
+					"../build/ldc/lib/libphobos2-ldc-unittest.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -725,8 +735,10 @@
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-filelist",
-					"../build/unittests-release",
+					"-force_load",
+					"../build/ldc/lib/libdruntime-ldc-unittest.a",
+					"-force_load",
+					"../build/ldc/lib/libphobos2-ldc-unittest.a",
 				);
 				PRODUCT_NAME = "unittester-release";
 			};
@@ -739,8 +751,10 @@
 				INFOPLIST_FILE = support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
-					"-filelist",
-					"../build/unittests-release",
+					"-force_load",
+					"../build/ldc/lib/libdruntime-ldc-unittest.a",
+					"-force_load",
+					"../build/ldc/lib/libphobos2-ldc-unittest.a",
 				);
 				PRODUCT_NAME = "unittester-release";
 			};

@@ -13,7 +13,7 @@
 		<key>189F6217FCE5493F40B7CA9FCF0654AAC0ACDAA9</key>
 		<string>github.com:smolt/ldc-iphone-dev.git</string>
 		<key>4D6A1BDD01891426A22DAE0955758532CA385554</key>
-		<string>git://github.com/smolt/iphoneos-apple-support.git</string>
+		<string>github.com:smolt/iphoneos-apple-support.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>unittester/unittester.xcodeproj</string>

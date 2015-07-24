@@ -16,12 +16,12 @@ distclean:
 unittest: unittest-debug unittest-release
 
 unittest-debug: all
-	$(MAKE) -C build/ldc druntime-ldc-unittest-debug phobos2-ldc-unittest-debug
-	tools/collect-unittests debug build
+	$(MAKE) -C build/ldc druntime-ldc-unittest-debug
+	$(MAKE) -C build/ldc phobos2-ldc-unittest-debug
 
 unittest-release: all
-	$(MAKE) -C build/ldc druntime-ldc-unittest phobos2-ldc-unittest
-	tools/collect-unittests release build
+	$(MAKE) -C build/ldc druntime-ldc-unittest
+	$(MAKE) -C build/ldc phobos2-ldc-unittest
 
 .PHONY: all clean distclean unittest unittest-debug unittest-release
 

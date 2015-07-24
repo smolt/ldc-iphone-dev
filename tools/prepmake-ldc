@@ -16,11 +16,6 @@ if [ ! -d "$llvmdir" ]; then
     exit 1
 fi
 
-# The D versions are to support troubleshooting issues detected by unittest.
-#
-# WIP_FloatPrecIssue - work in progress for some floating point
-#   precision problems
-
 cd $topdir/build/ldc &&
     cmake -DLLVM_ROOT_DIR=$llvmdir \
 	  -DIPHONEOS_ARCHS='all' \

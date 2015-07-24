@@ -94,9 +94,6 @@ is built in `build/ldc/bin/iphoneos-ldc2`.  The binaries have a
 ## Unittests
 An Xcode project called [unittester](https://github.com/smolt/ldc-iphone-dev/tree/master/unittester) is included that has targets for running the druntime and phobos unittests.  Two are D only with output to the console (nothing to see on the iOS device besides a black screen).  The other two are simple scrolling text apps that show the D unittest output as it runs.  These apps manage the UI with Objective-C and run the D unittests in another thread.
 
-*Note: the following instructions for running unittests are out-of-date
-with latest change to build universal libs.  Update in process*
-
 You can build and run the console druntime/phobos unittests from the shell.  Here I am running on my iPad mini (cortex-a9):
 
 ```
