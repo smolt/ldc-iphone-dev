@@ -1,3 +1,6 @@
+# place to add extra packages and stuff not for git
+extras/
+
 # Stuff for .gitignore when working under xcode
 
 # osx stuff not wanted

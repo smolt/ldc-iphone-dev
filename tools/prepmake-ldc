@@ -16,8 +16,17 @@ if [ ! -d "$llvmdir" ]; then
     exit 1
 fi
 
+if [ -f "$topdir/extras/iOScURL/libcurl.a" ]; then
+    withcurl=yes
+    echo 'Found libcurl, building phobos with std.net.curl, etc.c.curl'
+else
+    withcurl=no
+    echo 'No libcurl, building phobos without std.net.curl, etc.c.curl'
+fi
+
 cd $topdir/build/ldc &&
     cmake -DLLVM_ROOT_DIR=$llvmdir \
+	  -DWITH_CURL=$withcurl \
 	  -DIPHONEOS_ARCHS='all' \
 	  -DPROGRAM_PREFIX=iphoneos- \
 	  -DCMAKE_INSTALL_PREFIX=$installdir \

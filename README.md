@@ -21,7 +21,8 @@ The prerequisite packages are pretty much the same as listed for [building LDC](
 - a C++ toolchain (use Xcode since iPhoneSDK is needed anyway to cross compile C in druntime/phobos and to run on an iOS device)
 - CMake 2.8+ (I am using cmake-3.1.0-Darwin64.dmg from http://www.cmake.org/download/.  You will need to install command line tools by running CMake app and using install command line menu choice)
 - libconfig++ and its header files (I built from source downloaded from http://www.hyperrealm.com/libconfig/)
-- libcurl (needed by std.net.curl but I have not built for iOS yet. On TODO list)
+- libcurl (it will be automatically downloaded during build-all and placed in the
+  extras directory.  Comes from http://seiryu.home.comcast.net/~seiryu/libcurl-ios.html)
 
 LLVM is included as a submodule since it has been modified to support TLS on iOS.  No other LLVM will work.
 
@@ -147,7 +148,6 @@ In work now:
 - Update to future release LDC 0.16.0 (DMD FE 2.067)
 
 Back burner
-- Add libcurl to enable std.net.curl
 - Fix extern(C) ABI for small struct return values
 - Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)
 - APIs for iPhone SDK - [DStep](https://github.com/jacob-carlborg/dstep) helps here

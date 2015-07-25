@@ -21,6 +21,9 @@ fi
 ncpu=`sysctl -n hw.logicalcpu_max`
 [ $ncpu -gt 1 ] && let ncpu--
 
+# get any other packages needed
+tools/get-extras
+
 make -j $ncpu
 
 # Make essentially does the following first time

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		377A46DE1B6356D200360087 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 377A46DD1B6356D200360087 /* libcurl.a */; };
+		377A46DF1B6356D200360087 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 377A46DD1B6356D200360087 /* libcurl.a */; };
+		377A46E01B6356D200360087 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 377A46DD1B6356D200360087 /* libcurl.a */; };
+		377A46EB1B635EF300360087 /* foundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A46EA1B635EF300360087 /* foundation.m */; };
+		377A46EC1B635EF300360087 /* foundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A46EA1B635EF300360087 /* foundation.m */; };
+		377A47001B636AE300360087 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 377A46DD1B6356D200360087 /* libcurl.a */; };
 		3781D86E1A9AD0E000B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8681A9AD0DF00B2C8E6 /* libphobos2-ldc-debug.a */; };
 		3781D8701A9AD0E000B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D86A1A9AD0DF00B2C8E6 /* libdruntime-ldc-debug.a */; };
 		3781D8721A9AD12900B2C8E6 /* libiphoneossup.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3781D8711A9AD12900B2C8E6 /* libiphoneossup.a */; };
@@ -106,6 +112,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		377A46DD1B6356D200360087 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../extras/iOScURL/libcurl.a; sourceTree = "<group>"; };
+		377A46EA1B635EF300360087 /* foundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = foundation.m; sourceTree = "<group>"; };
 		3781D83B1A9A4AD900B2C8E6 /* D Unit Dbg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "D Unit Dbg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3781D8401A9A4AD900B2C8E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3781D8671A9AD0DF00B2C8E6 /* libphobos2-ldc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libphobos2-ldc.a"; path = "../build/ldc/lib/libphobos2-ldc.a"; sourceTree = "<group>"; };
@@ -133,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3781D86E1A9AD0E000B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */,
+				377A46DE1B6356D200360087 /* libcurl.a in Frameworks */,
 				3781D8701A9AD0E000B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */,
 				3781D8721A9AD12900B2C8E6 /* libiphoneossup.a in Frameworks */,
 			);
@@ -143,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3781D8A21A9AE0CE00B2C8E6 /* libphobos2-ldc-debug.a in Frameworks */,
+				377A46E01B6356D200360087 /* libcurl.a in Frameworks */,
 				3781D8A31A9AE0CE00B2C8E6 /* libdruntime-ldc-debug.a in Frameworks */,
 				3781D8A51A9AE0CE00B2C8E6 /* libiphoneossup.a in Frameworks */,
 			);
@@ -160,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3781D8E01A9B0A6600B2C8E6 /* libdruntime-ldc.a in Frameworks */,
+				377A46DF1B6356D200360087 /* libcurl.a in Frameworks */,
 				3781D8DF1A9B0A6600B2C8E6 /* libphobos2-ldc.a in Frameworks */,
 				3781D8D51A9B09D500B2C8E6 /* libiphoneossup.a in Frameworks */,
 			);
@@ -170,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3781D8E81A9B0BD600B2C8E6 /* libiphoneossup.a in Frameworks */,
+				377A47001B636AE300360087 /* libcurl.a in Frameworks */,
 				37FC719D1B38F625007E01E0 /* libphobos2-ldc.a in Frameworks */,
 				37FC719E1B38F625007E01E0 /* libdruntime-ldc.a in Frameworks */,
 			);
@@ -192,6 +204,7 @@
 				37EE116D1B620B0F005280D0 /* unittest_config_release.d */,
 				37EE116A1B620AF9005280D0 /* unittest_config_debug.d */,
 				3781D8401A9A4AD900B2C8E6 /* main.m */,
+				377A46EA1B635EF300360087 /* foundation.m */,
 				3781D9011A9B0FA600B2C8E6 /* xctest-dummy.m */,
 				3781D8BF1A9AEB1700B2C8E6 /* libs */,
 				3781D8C51A9AF2EC00B2C8E6 /* support */,
@@ -220,6 +233,7 @@
 				3781D8681A9AD0DF00B2C8E6 /* libphobos2-ldc-debug.a */,
 				3781D86A1A9AD0DF00B2C8E6 /* libdruntime-ldc-debug.a */,
 				3781D8711A9AD12900B2C8E6 /* libiphoneossup.a */,
+				377A46DD1B6356D200360087 /* libcurl.a */,
 			);
 			name = libs;
 			sourceTree = "<group>";
@@ -454,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377A46EB1B635EF300360087 /* foundation.m in Sources */,
 				37EE116C1B620AF9005280D0 /* unittest_config_debug.d in Sources */,
 				3781D8A01A9AE0CE00B2C8E6 /* unittest.d in Sources */,
 			);
@@ -481,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377A46EC1B635EF300360087 /* foundation.m in Sources */,
 				37EE116F1B620B0F005280D0 /* unittest_config_release.d in Sources */,
 				3781D8E31A9B0BD600B2C8E6 /* unittest.d in Sources */,
 			);
@@ -550,6 +566,7 @@
 					"$(inherited)",
 					../build/ldc/lib,
 					"../iphoneos-apple-support",
+					../extras/iOScURL,
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -593,6 +610,7 @@
 					"$(inherited)",
 					../build/ldc/lib,
 					"../iphoneos-apple-support",
+					../extras/iOScURL,
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -606,7 +624,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = support/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
@@ -621,7 +638,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = support/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
@@ -637,7 +653,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
@@ -653,7 +668,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
@@ -702,7 +716,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = support/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest.a",
@@ -717,7 +730,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = support/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest.a",
@@ -733,7 +745,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest.a",
@@ -749,7 +760,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest.a",
