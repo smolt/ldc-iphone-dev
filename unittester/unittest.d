@@ -96,26 +96,45 @@ bool setupEnvAndRunTests()
        help math tests to pass all their cases.  In a real iOS app, probably
        would not depend on such behavior that math unittests expect.
 
-       FPSCR mode bits of interest
+       FPSCR(ARM)/ FPCR(AArch64) mode bits of interest.  ARM has both bits
+       24,25 set by default, AArch64 has just bit 25 set by default.
 
        [25] DN Default NaN mode enable bit:
        0 = default NaN mode disabled 1 = default NaN mode enabled.
        [24] FZ Flush-to-zero mode enable bit:
        0 = flush-to-zero mode disabled 1 = flush-to-zero mode enabled. */
-    version (ARM) version (D_HardFloat)
+    version (D_HardFloat)
     {
         import ldc.llvmasm;
-        puts("FPU Flush to Zero and Default NaN disabled for tests");
-        __asm("vmrs $0, fpscr\n"
-              "bic $0, #(3 << 24)\n"
-              "vmsr fpscr, $0", "~{r0}");
-        scope (exit)
+        version (ARM)
         {
-            puts("Restoring FPU mode");
-            // restore flush to zero and default nan mode
-            __asm("vmrs $0, fpscr\n"
-                  "orr $0, #(3 << 24)\n"
-                  "vmsr fpscr, $0", "~{r0}");
+            puts("FPU Flush to Zero and Default NaN disabled for tests");
+            cast(void)__asm!uint("vmrs $0, fpscr\n"
+                                 "bic $0, #(3 << 24)\n"
+                                 "vmsr fpscr, $0", "=r");
+            scope (exit)
+            {
+                puts("Restoring FPU mode");
+                // restore flush to zero and default nan mode
+                cast(void)__asm!uint("vmrs $0, fpscr\n"
+                                     "orr $0, #(3 << 24)\n"
+                                     "vmsr fpscr, $0", "=r");
+            }
+        }
+        else version (AArch64)
+        {
+            puts("Default NaN disabled for tests");
+            cast(void)__asm!uint("mrs $0, fpcr\n"
+                                 "and $0, $0, #~(1 << 25)\n"
+                                 "msr fpcr, $0", "=r");
+            scope (exit)
+            {
+                puts("Restoring FPU mode");
+                // restore default nan mode
+                cast(void)__asm!uint("mrs $0, fpcr\n"
+                                     "orr $0, $0, #(1 << 25)\n"
+                                     "msr fpcr, $0", "=r");
+            }
         }
     }
 
@@ -133,8 +152,8 @@ ModuleInfo*[] findModuleTests()
     {
         // test specific module
         //if (m.name != "std.math") continue;
-
-        int i = (modules.length += 1);
+        
+        size_t i = (modules.length += 1);
         while (--i > 0 && m.name < modules[i-1].name)
             modules[i] = modules[i-1];
         modules[i] = m;
