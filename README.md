@@ -3,9 +3,9 @@ An LDC (LLVM-base D Compiler) development sandbox for iPhone iOS.
 
 This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting iPhoneOS.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor test failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.  In theory.
 
-Versions derived from: LDC 0.15.1 (DMD v2.066.1) and LLVM 3.5.1.
+Versions derived from: LDC 0.15.2 (DMD v2.066.1) and LLVM 3.6.1.
 
-There is still stuff to [work on](#what-is-missing), but overall the core D language is ready to try on iOS.
+There is still stuff to [work on](#what-is-missing), but overall the core D language is ready to try on iOS.  In particular, arm64 support is a new addition.
 
 ## License 
 Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/blob/master/APPLE_LICENSE) in directory iphoneos-apple-support before using.  This subdirectory has some modified source code derived from http://www.opensource.apple.com that makes TLS work on iOS.  As I understand it, if you publish an app or source that uses that code, you need to follow the provisions of the license.
@@ -13,7 +13,7 @@ Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/
 LLVM also has its [LICENSE.TXT](https://github.com/smolt/llvm/blob/ios/LICENSE.TXT) and LDC its combined [LICENSE](https://github.com/smolt/ldc/blob/ios/LICENSE).
 
 ## Prerequisites
-You will need an OS X host and Xcode.  I am currently on Yosemite 10.10.3 and Xcode 6.3.2.
+You will need an OS X host and Xcode.  I am currently on Yosemite 10.10.4 and Xcode 6.4.
 
 The prerequisite packages are pretty much the same as listed for [building LDC](http://wiki.dlang.org/Building_LDC_from_source) with my comments in parentheses:
 
@@ -70,15 +70,14 @@ Note that if you don't specify `-arch`, the default target is now the i386
 iOS Simulator (used to be armv7).
 
 At this point, you have an LDC toolchain and universal druntime/phobos libs
-in `build/ldc` for 32-bit armv7, armv7s (iPhone 3gs to iPhone 5c),
-and i386 iOS Simulator.  The compiler can also target armv6 target
+in `build/ldc` for armv7, armv7s, arm64 (iPhone 3gs to iPhone 6),
+and i386/x86_64 iOS Simulator.  The compiler can also target armv6 target
 (original iPhone and other older devices), but it is left out of the
-universal libs to speed build time.  Missing is arm64 for iPhone 6 and iPhone 5s, although
-these 64-bit devices can run 32-bit instructions too.  For more
+universal libs to speed build time.  For more
 information
 [see Device Compatibility](https://developer.apple.com/library/ios/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html).
 
-My only hardware is armv7 so that is all I can really test for the moment.
+Testing to date is on armv7 and arm64, and iOS 6, 7, and 8.
 
 `tools/iphoneos-ldc2` is nothing more than a script that redirects to what
 is built in `build/ldc/bin/iphoneos-ldc2`.  The binaries have a
@@ -126,7 +125,7 @@ Passed 112 of 113 (3 have tailored tests), 60 other modules did not have tests
 Restoring FPU mode
 ```
 
-Note: that iOS by default runs with the ARM FPU "Default NaN" and "Flush to Zero" modes enabled.  In order to pass many of the math unittests, these modes are disabled first.  This is something to consider if you are doing some fancy math and expect full subnormal and NaN behavior.
+Note: that iOS by default runs with the ARM FPU "Default NaN" (arm,arm64) and "Flush to Zero" (arm only) modes enabled.  In order to pass many of the math unittests, these modes are disabled first.  This is something to consider if you are doing some fancy math and expect full subnormal and NaN behavior.
 
 ### Unittest Status
 Most druntime and phobos unittests pass with the exceptions being math
@@ -143,13 +142,13 @@ test can run.  Grep for "WIP" to see all the details.
 Or what is left to do.
 
 In work now:
-- Get arm64 target working
-- Xcode/D integration (could use someone who loves working with Xcode plugins)
+- Finish arm64 target (Fiber switching doesn't preserve float regs yet, maybe other stuff too as it is brand new)
 - Update to future release LDC 0.16.0 (DMD FE 2.067)
 
 Back burner
-- Fix extern(C) ABI for small struct return values
+- Make totally compatible with C ABI (both iOS arm/arm64)
 - Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)
+- Xcode/D integration (could use someone who loves working with Xcode plugins)
 - APIs for iPhone SDK - [DStep](https://github.com/jacob-carlborg/dstep) helps here
 - A D-based iOS App submitted to Apple App Store
 - A D-based iOS App accepted by the Apple App Store!
