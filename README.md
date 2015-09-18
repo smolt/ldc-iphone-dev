@@ -142,7 +142,6 @@ test can run.  Grep for "WIP" to see all the details.
 Or what is left to do.
 
 In work now:
-- Finish arm64 target (Fiber switching doesn't preserve float regs yet, maybe other stuff too as it is brand new)
 - Update to future release LDC 0.16.0 (DMD FE 2.067)
 
 Back burner
