@@ -15,6 +15,12 @@ LLVM also has its [LICENSE.TXT](https://github.com/smolt/llvm/blob/ios/LICENSE.T
 ## Prerequisites
 You will need an OS X host and Xcode.  I am currently on Yosemite 10.10.4 and Xcode 6.4.
 
+Note - does not work with Xcode 7.0 yet but will soon.  The problem is
+that the linker `ld` packaged with Xcode complains loudly when it
+discovers we are making use of `thread_local_variables` section types
+in an iOS app.  A patch is in the works to use a custom section for
+thread locals instead.
+
 The prerequisite packages are pretty much the same as listed for [building LDC](http://wiki.dlang.org/Building_LDC_from_source) with my comments in parentheses:
 
 - git
