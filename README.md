@@ -151,7 +151,6 @@ In work now:
 - Update to future release LDC 0.16.0 (DMD FE 2.067)
 
 Back burner
-- Make totally compatible with C ABI (both iOS arm/arm64)
 - Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)
 - Xcode/D integration (could use someone who loves working with Xcode plugins)
 - APIs for iPhone SDK - [DStep](https://github.com/jacob-carlborg/dstep) helps here
