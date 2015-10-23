@@ -1,11 +1,11 @@
 # ldc-iphone-dev
-An LDC (LLVM-base D Compiler) development sandbox for iPhone iOS.
+An LDC (LLVM-base D Compiler) development sandbox for targetting iOS.
 
-This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting iPhoneOS.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor test failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.  In theory.
+This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting Apple's iPhoneOS == iOS.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor math failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.  In theory.
 
 Versions derived from: LDC 0.15.2 (DMD v2.066.1) and LLVM 3.6.1.
 
-There is still stuff to [work on](#what-is-missing), but overall the core D language is ready to try on iOS.  In particular, arm64 support is a new addition.
+There is still stuff to [work on](#what-is-missing), but overall the core D language is ready to try on iOS.
 
 ## License 
 Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/blob/master/APPLE_LICENSE) in directory iphoneos-apple-support before using.  This subdirectory has some modified source code derived from http://www.opensource.apple.com that makes TLS work on iOS.  As I understand it, if you publish an app or source that uses that code, you need to follow the provisions of the license.
@@ -13,13 +13,10 @@ Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/
 LLVM also has its [LICENSE.TXT](https://github.com/smolt/llvm/blob/ios/LICENSE.TXT) and LDC its combined [LICENSE](https://github.com/smolt/ldc/blob/ios/LICENSE).
 
 ## Prerequisites
-You will need an OS X host and Xcode.  I am currently on Yosemite 10.10.4 and Xcode 6.4.
-
-Note - does not work with Xcode 7.0 yet but will soon.  The problem is
-that the linker `ld` packaged with Xcode complains loudly when it
-discovers we are making use of `thread_local_variables` section types
-in an iOS app.  A patch is in the works to use a custom section for
-thread locals instead.
+You will need an OS X host and Xcode.  I am currently using
+Yosemite 10.10.5 and test against Xcode 6.4 and 7.1.  Both seem to
+work fine, but Xcode 7.1 sometimes outputs warnings about missing debug
+symbols whereas Xcode 6.4 is quiet.
 
 The prerequisite packages are pretty much the same as listed for [building LDC](http://wiki.dlang.org/Building_LDC_from_source) with my comments in parentheses:
 
@@ -32,9 +29,9 @@ The prerequisite packages are pretty much the same as listed for [building LDC](
 
 LLVM is included as a submodule since it has been modified to support TLS on iOS.  No other LLVM will work.
 
-To really have fun, you will need an iOS device.  There is also news
-that with Xcode 7 you can download to your own devices without
-enrolling in the Developer Program.
+To really have fun, you will need an iOS device.  Beginning with Xcode
+7 you can download to your own devices without enrolling in the
+Developer Program.
 
 ## Build
 Download with git and build:
@@ -62,8 +59,11 @@ You can quickly try the resulting compiler to generate armv7 code by typing:
 $ tools/iphoneos-ldc2 -arch armv7 -c hello.d
 ```
 
-This only gives you a .o file but using Xcode and a provisioning profile you could link, codesign, bundle, and run it on an iOS device.  A sample Xcode [project](#sample-hellod-project) does just that if you have a provisioning profile.
-Without a provisioning profile, you can still try out D with the iOS Simulator.
+This only gives you a .o file but using Xcode and a provisioning
+profile you could link, code sign, bundle, and run it on an iOS
+device.  A sample Xcode [project](#sample-hellod-project) does just
+that if you have a provisioning profile.  Without a provisioning
+profile, you can still try out D with the iOS Simulator.
 
 To generate code for the iOS Simulator, just change the `-arch`
 option:
