@@ -365,7 +365,7 @@
 		3781D8331A9A4AD900B2C8E6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = smolt;
 				TargetAttributes = {
 					3781D83A1A9A4AD900B2C8E6 = {
@@ -548,7 +548,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -564,7 +566,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = settings/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					../build/ldc/lib,
@@ -597,6 +599,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -607,7 +610,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = settings/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					../build/ldc/lib,
@@ -631,6 +634,7 @@
 					"-force_load",
 					"../build/ldc/lib/libphobos2-ldc-unittest-debug.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -645,6 +649,7 @@
 					"-force_load",
 					"../build/ldc/lib/libphobos2-ldc-unittest-debug.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -654,12 +659,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = support/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
 					"-force_load",
 					"../build/ldc/lib/libphobos2-ldc-unittest-debug.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -672,12 +679,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = support/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
 					"-force_load",
 					"../build/ldc/lib/libphobos2-ldc-unittest-debug.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -697,6 +706,7 @@
 				);
 				INFOPLIST_FILE = "support/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/unittester-debug.app/unittester-debug";
 			};
@@ -712,6 +722,7 @@
 				);
 				INFOPLIST_FILE = "support/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/unittester-debug.app/unittester-debug";
 			};
@@ -727,6 +738,7 @@
 					"-force_load",
 					"../build/ldc/lib/libphobos2-ldc-unittest.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -741,6 +753,7 @@
 					"-force_load",
 					"../build/ldc/lib/libphobos2-ldc-unittest.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -756,6 +769,7 @@
 					"-force_load",
 					"../build/ldc/lib/libphobos2-ldc-unittest.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "unittester-release";
 			};
 			name = Debug;
@@ -771,6 +785,7 @@
 					"-force_load",
 					"../build/ldc/lib/libphobos2-ldc-unittest.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "unittester-release";
 			};
 			name = Release;
@@ -789,6 +804,7 @@
 				);
 				INFOPLIST_FILE = "support/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/unittester-release.app/unittester-release";
 			};
@@ -804,6 +820,7 @@
 				);
 				INFOPLIST_FILE = "support/Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "smolt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/unittester-release.app/unittester-release";
 			};
