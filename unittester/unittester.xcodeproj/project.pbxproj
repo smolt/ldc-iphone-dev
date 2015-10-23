@@ -371,9 +371,6 @@
 					3781D83A1A9A4AD900B2C8E6 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
-					3781D89E1A9AE0CE00B2C8E6 = {
-						DevelopmentTeam = 6QBG8H8X2S;
-					};
 					3781D8B31A9AE1D700B2C8E6 = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 3781D89E1A9AE0CE00B2C8E6;
@@ -658,8 +655,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = support/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
@@ -679,7 +676,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = support/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-force_load",
 					"../build/ldc/lib/libdruntime-ldc-unittest-debug.a",
