@@ -1,0 +1,42 @@
+iphoneos-ldc2 is the LDC (LLVM-based D Language) cross-compiler for
+iOS.  The binaries and libraries support ARM devices (armv7,
+armv7s, arm64) and the iOS Simulator.
+
+Everything needed to rebuilt this distribution can be found at
+https://github.com/smolt/ldc-iphone-dev using the tag listed by
+iphoneos-ldc2 -version.  Issues can be reported there too.
+
+Licensing - please read the included license files:
+
+- APPLE_LICENSE applies to use of libiphoneossup.a.  If you end up
+  distributing an app linked to this library, you should include a
+  copy of APPLE_LICENSE file.  Source code for this library can be
+  found at https://github.com/smolt/iphoneos-apple-support.
+  
+- COPYING.libcurl is the copyright notice for libcurl
+
+- LICENSE is from LDC and applies to everything else
+
+Usage of iphoneos-ldc2 is the same as ldc2 with the addition of
+clang-style -arch option to select the iOS architecture to compile
+code for.  Valid -arch options are armv6, armv7, armv7s, arm64,
+X86_64, or i386 (armv6 is not included in the druntime/phobos
+universal libs however).
+
+Xcode or similar is needed to link and bundle an iOS app.
+
+xc-iphoneos-dc can be used as a custom *.d build script under Xcode.
+Or you can compile D source externally and add your libraries/object
+files to an Xcode project.
+
+Try this: for simple console test programs it is possible to use
+environment to tell linker to use iOS sim SDK:
+
+$ export IPHONEOS_DEPLOYMENT_TARGET=5.1
+$ export SDKROOT=`xcrun --sdk iphonesimulator -show-sdk-path`
+$ iphoneos-ldc2 -arch i386 hello.d -L-liphoneossup
+$ ./hello
+
+More information on The D Programming Language can be found at
+http://dlang.org and information specific to LDC can be found at
+http://wiki.dlang.org/LDC.

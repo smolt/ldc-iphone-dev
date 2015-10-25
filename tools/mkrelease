@@ -1,0 +1,51 @@
+#!/bin/sh
+# Make a release tar from the current source tree.  Uses the version
+# reported by iphoneos-ldc2 which is either the git tag if it exists,
+# otherwise the git hash.  It is expected that prepmake-ldc was run to
+# set the install directory to build/install (the Makefile does this).
+
+# top dir is one up from this script's dir
+topdir=`dirname $BASH_SOURCE[0]`/..
+absolute=`cd $topdir; pwd`
+installdir="$absolute/build/install"
+
+# Use multi cpus, but try to leave one left for other work
+ncpu=`sysctl -n hw.logicalcpu_max`
+[ $ncpu -gt 1 ] && let ncpu--
+
+make -j $ncpu ldc-install
+
+# fixup the conf paths
+sed -i '' -e "s?$installdir/?%%ldcbinarypath%%/../?g" $installdir/etc/ldc2.conf
+
+# add information text files
+cp -v $topdir/tools/release/README $installdir/
+cp -v $topdir/ldc/LICENSE $installdir/
+
+cp -v $topdir/tools/xc-iphoneos-dc $installdir/bin
+
+libconfig=`otool -L $installdir/bin/iphoneos-ldc2 | awk '/libconfig/{print $1}'`
+if [ ! -f "$libconfig" ]; then
+    echo >&2 "unable to find libconfig libs for release"
+    exit 1
+fi
+cp -v $libconfig $installdir/bin
+
+# add extra
+(cd $topdir/extras/iOScURL
+ cp -v libcurl.a $installdir/lib
+ cp -v COPYING $installdir/COPYING.libcurl)
+
+# add stuff from apple directory
+(cd $topdir/iphoneos-apple-support
+ cp -v libiphoneossup.a $installdir/lib
+ cp -v APPLE_LICENSE $installdir)
+
+ldc=$installdir/bin/iphoneos-ldc2
+ver=$($ldc -version | awk -F'[()]' '/^LDC - the LLVM/ {print $2}')
+arch=$(file $ldc | awk '{print $NF}')
+relname="ldc2-${ver}-osx"
+
+mv $installdir $relname
+echo creating $relname.tar.xz
+tar cfJ $relname.tar.xz $relname

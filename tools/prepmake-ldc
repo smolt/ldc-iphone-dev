@@ -1,6 +1,6 @@
 #!/bin/bash
 # Configure to build LDC with universal libs (druntime/phobos) for
-# iPhoneOS 32-bit archtectures.  Assumes LLVM is already built
+# all iOS archtectures.  Assumes LLVM is already built
 
 # top dir is one up from this script's dir
 topdir=`dirname $BASH_SOURCE[0]`/..
