@@ -1,11 +1,11 @@
 # ldc-iphone-dev
 An LDC (LLVM-base D Compiler) development sandbox for targetting iOS.
 
-This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting Apple's iPhoneOS == iOS.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor math failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.  In theory.
+This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting Apple's iOS for iPhone, iPad, and iPod Touch.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor math failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.
 
 Versions derived from: LDC 0.15.2 (DMD v2.066.1) and LLVM 3.6.1.
 
-There is still stuff to [work on](#what-is-missing), but overall the core D language is ready to try on iOS.
+There is still stuff to [work on](#what-is-missing), but overall the core D language is ready for iOS.
 
 ## License 
 Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/blob/master/APPLE_LICENSE) in directory iphoneos-apple-support before using.  This subdirectory has some modified source code derived from http://www.opensource.apple.com that makes TLS work on iOS.  As I understand it, if you publish an app or source that uses that code, you need to follow the provisions of the license.
@@ -13,10 +13,12 @@ Please read the [APPLE_LICENSE](https://github.com/smolt/iphoneos-apple-support/
 LLVM also has its [LICENSE.TXT](https://github.com/smolt/llvm/blob/ios/LICENSE.TXT) and LDC its combined [LICENSE](https://github.com/smolt/ldc/blob/ios/LICENSE).
 
 ## Prerequisites
-You will need an OS X host and Xcode.  I am currently using
-Yosemite 10.10.5 and test against Xcode 6.4 and 7.1.  Both seem to
-work fine, but Xcode 7.1 sometimes outputs warnings about missing debug
-symbols whereas Xcode 6.4 is quiet.
+
+You will need an OS X host and Xcode. I am currently using Yosemite
+10.10.5 and test against Xcode 6.4 and 7.1. Both seem to work fine,
+but Xcode 7.1 sometimes outputs warnings about missing debug symbols
+whereas Xcode 6.4 is quiet. You also need to set Enable Bitcode to NO
+in Xcode 7 for now.
 
 The prerequisite packages are pretty much the same as listed for [building LDC](http://wiki.dlang.org/Building_LDC_from_source) with my comments in parentheses:
 
