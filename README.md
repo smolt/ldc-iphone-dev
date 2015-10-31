@@ -3,7 +3,7 @@ An LDC (LLVM-base D Compiler) development sandbox for targetting iOS.
 
 This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting Apple's iOS for iPhone, iPad, and iPod Touch.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor math failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.
 
-Versions derived from: LDC 0.15.2 (DMD v2.066.1) and LLVM 3.6.1.
+Versions derived from: LDC 0.16.1 (DMD v2.067.1) and LLVM 3.6.1.
 
 There is still stuff to [work on](#what-is-missing), but overall the core D language is ready for iOS.
 
@@ -110,26 +110,18 @@ $ xcodebuild -project unittester/unittester.xcodeproj -destination "platform=iOS
 
 === BUILD TARGET unittester-debug OF PROJECT unittester WITH CONFIGURATION Debug ===
 ...
+=-=-= Testing druntime/phobos debug build =-=-=
+Setting dir to TMPDIR so unittests can write files if needed.
+cd /private/var/mobile/Applications/F3F25E2E-0C8C-4B6F-A976-54D747D5D4BE/tmp
+FPU Flush to Zero and Default NaN disabled for tests
 Testing 1 core.atomic: OK (took 0ms)
-Testing 2 core.bitop: OK (took 0ms)
+Testing 2 core.bitop: OK (took 124ms)
 Testing 3 core.checkedint: OK (took 0ms)
-Testing 4 core.demangle: OK (took 17ms)
+Testing 4 core.demangle: OK (took 49ms)
 ...
-Testing 113 std.zlib: OK (took 96ms)
-Passed 112 of 113 (3 have tailored tests), 60 other modules did not have tests
-Restoring FPU mode
-
-$ xcodebuild -project unittester/unittester.xcodeproj -destination "platform=iOS,name=Dan's iPad" test -scheme release
-
-=== BUILD TARGET unittester-release Tests OF PROJECT unittester WITH CONFIGURATION Debug ===
-...
-Testing 1 core.atomic: OK (took 0ms)
-Testing 2 core.bitop: OK (took 0ms)
-Testing 3 core.checkedint: OK (took 0ms)
-Testing 4 core.demangle: OK (took 10ms)
-...
-Testing 113 std.zlib: OK (took 92ms)
-Passed 112 of 113 (3 have tailored tests), 60 other modules did not have tests
+Testing 136 std.zlib: OK (took 248ms)
+Testing 137 rt.lifetime: OK (took 111ms)
+Passed 136 of 137 (2 have tailored tests), 182 other modules did not have tests
 Restoring FPU mode
 ```
 
@@ -140,7 +132,6 @@ Most druntime and phobos unittests pass with the exceptions being math
 related.
 
 - std.internal.math.gammafunction - needs update for 64-bit reals
-- std.math - floating point off-by-one LSB error in a few cases (I think this is a don't care)
 
 All the failures are marked in the druntime and phobos source with
 versions that begin with "WIP" to workaround the failure so rest of
@@ -148,9 +139,6 @@ test can run.  Grep for "WIP" to see all the details.
 
 ## What is Missing
 Or what is left to do.
-
-In work now:
-- Update to future release LDC 0.16.0 (DMD FE 2.067)
 
 Back burner
 - Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)

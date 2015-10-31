@@ -10,6 +10,9 @@ import core.runtime;
 import core.stdc.stdio;
 import xyzzy = ldc.xyzzy: cvstr;
 
+// set if GC is in an inconsistent state
+bool trashedGc;
+
 // Only compile in main if running stand alone.  If called from an iOS app,
 // don't need main.
 version (UnittestMain)
@@ -29,6 +32,13 @@ version (UnittestMain)
         // of C code too, so not D related.  Not really an issue because real iOS
         // apps should never return anyway.
         // Return non-zero to avoid the delay.
+
+        // in 2.067, rt.lifetime trashes the gc and code in other threads will
+        // deadlock on gc calls, so bypass rt_term and its proper shutdown
+        // of threads.
+        import core.stdc.stdlib: exit;
+        if (trashedGc) exit(1);
+
         return 1;
     }
 }
@@ -151,10 +161,15 @@ ModuleInfo*[] findModuleTests()
     foreach (m; ModuleInfo)
     {
         // test specific module
-        //if (m.name != "std.math") continue;
-        
+        //if (m.name != "std.stream") continue;
+
+        bool rt_lifetime = (m.name == "rt.lifetime");
+        if (rt_lifetime)
+            trashedGc = true;
+
+        // rt.lifetime is added to the end because it leaves gc in bad state
         size_t i = (modules.length += 1);
-        while (--i > 0 && m.name < modules[i-1].name)
+        while (--i > 0 && !rt_lifetime && m.name < modules[i-1].name)
             modules[i] = modules[i-1];
         modules[i] = m;
     }
