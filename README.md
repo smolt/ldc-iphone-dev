@@ -3,7 +3,7 @@ An LDC (LLVM-base D Compiler) development sandbox for targetting iOS.
 
 This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting Apple's iOS for iPhone, iPad, and iPod Touch.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor math failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.
 
-Versions derived from: LDC 0.16.1 (DMD v2.067.1) and LLVM 3.6.1.
+Versions derived from: LDC 0.16.1 (DMD v2.067.1) and LLVM 3.6.2.
 
 There is still stuff to [work on](#what-is-missing), but overall the core D language is ready for iOS.
 
@@ -27,7 +27,8 @@ The prerequisite packages are pretty much the same as listed for [building LDC](
 - CMake 2.8+ (I am using cmake-3.1.0-Darwin64.dmg from http://www.cmake.org/download/.  You will need to install command line tools by running CMake app and using install command line menu choice)
 - libconfig++ and its header files (I built from source downloaded from http://www.hyperrealm.com/libconfig/)
 - libcurl (it will be automatically downloaded during build-all and placed in the
-  extras directory.  Comes from http://seiryu.home.comcast.net/~seiryu/libcurl-ios.html)
+  extras directory.  Comes from http://seiryu.home.comcast.net/~seiryu/libcurl-ios.html
+  : *Hmmm, this download is no longer available as of 11/3/2015, will look for alternative*)
 
 LLVM is included as a submodule since it has been modified to support TLS on iOS.  No other LLVM will work.
 
