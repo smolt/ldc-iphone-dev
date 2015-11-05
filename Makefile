@@ -1,4 +1,4 @@
-# Make main LDC stuff for IPhoneOS and support packages
+# Make main LDC stuff for iOS and support packages
 
 # The llvm-config program.  Change this if llvm is configured
 # differently (e.g. Debug+Asserts)
