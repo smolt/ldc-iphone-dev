@@ -1,9 +1,16 @@
 # ldc-iphone-dev
-An LDC (LLVM-base D Compiler) development sandbox for targetting iOS.
+An LDC (LLVM-base D Compiler) development sandbox for targetting
+iOS and soon its siblings tvOS, watchOS.
 
-This [repo](https://github.com/smolt/ldc-iphone-dev) glues together various pieces needed to build an LDC cross compiler targeting Apple's iOS for iPhone, iPad, and iPod Touch.  It also includes a few samples to show how to get started.  The compiler and libraries are in good enough shape to pass the druntime/phobos unittests with a few minor math failures (see [Unittest Status](#unittest-status) below).  This means someone could, if so inclined, build their D library and use it in an iOS App.
+This [repo](https://github.com/smolt/ldc-iphone-dev) glues together
+various pieces needed to build an LDC cross compiler targeting Apple's
+iOS for iPhone, iPad, and iPod Touch.  It also includes a few samples
+to show how to get started.  The compiler and libraries are in good
+enough shape to pass the druntime/phobos unittests (see
+[Unittest Status](#unittest-status) below).  So yes, you can build
+your D library and use it in an iOS App.
 
-Versions derived from: LDC 0.16.1 (DMD v2.067.1) and LLVM 3.6.2.
+Versions derived from: LDC 0.17.0 alpha (DMD v2.068.2) and LLVM 3.6.2.
 
 There is still stuff to [work on](#what-is-missing), but overall the core D language is ready for iOS.
 
@@ -129,21 +136,14 @@ Restoring FPU mode
 Note: that iOS by default runs with the ARM FPU "Default NaN" (arm,arm64) and "Flush to Zero" (arm only) modes enabled.  In order to pass many of the math unittests, these modes are disabled first.  This is something to consider if you are doing some fancy math and expect full subnormal and NaN behavior.
 
 ### Unittest Status
-Most druntime and phobos unittests pass with the exceptions being math
-related.
-
-- std.internal.math.gammafunction - needs update for 64-bit reals
-
-All the failures are marked in the druntime and phobos source with
-versions that begin with "WIP" to workaround the failure so rest of
-test can run.  Grep for "WIP" to see all the details.
+Everything seems to be working!  A couple comparisons in
+std.internal.math.gammafunction are off by a ulp, but no big deal.
 
 ## What is Missing
-Or what is left to do.
-
-Back burner
+- Support tvOS and watchOS.  Working on this thanks to LLVM 3.8, hopefully done
+  before new years!
+- Xcode/D integration.  I think this is the next most import thing.
 - Objective-C interop - work in progress under [DIP 43](http://wiki.dlang.org/DIP43)
-- Xcode/D integration (could use someone who loves working with Xcode plugins)
 - APIs for iPhone SDK - [DStep](https://github.com/jacob-carlborg/dstep) helps here
 - A D-based iOS App submitted to Apple App Store
 - A D-based iOS App accepted by the Apple App Store!
