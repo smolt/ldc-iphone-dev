@@ -63,12 +63,21 @@ build/llvm/Makefile:
 
 # emacs stuff
 
-.PHONY: etags
+.PHONY: etags dscanner-check
 
-etags:
-	cd llvm && etags `find include lib -name '*.[hc]' -o -name '*.cpp'`
-	cd llvm && if [ -d tools/clang ]; then \
-	    etags --append \
-	    `find tools/clang/{include,lib} -name '*.[hc]' -o -name '*.cpp'`; \
+etags: dscanner-check
+	etags -o TAGS.llvm `find llvm/{include,lib} -name '*.[hc]' -o -name '*.cpp'`
+	if [ -d llvm/tools/clang ]; then \
+	    etags --append -o TAGS.llvm \
+	    `find llvm/tools/clang/{include,lib} -name '*.[hc]' -o -name '*.cpp'`; \
 	  fi
-	cd ldc && etags -i ../llvm/TAGS `find . -name '*.[hc]' -o -name '*.cpp'`
+	etags -o TAGS.ldc `find ldc -name '*.[hc]' -o -name '*.cpp'`
+	dscanner --etags ldc/runtime/druntime/src >TAGS.druntime
+	dscanner --etags ldc/runtime/phobos >TAGS.phobos
+	dscanner --etagsAll ldc/runtime/druntime/src >TAGS.private-druntime
+	dscanner --etagsAll ldc/runtime/phobos >TAGS.private-phobos
+	etags -i TAGS.druntime -i TAGS.phobos -i TAGS.ldc -i TAGS.llvm
+
+dscanner-check:
+	@type dscanner >&/dev/null || \
+	  (echo 'Need dscanner in PATH to make all etags';false)
