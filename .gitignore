@@ -1,6 +1,9 @@
 # place to add extra packages and stuff not for git
 extras/
 
+# all those emacs TAGS files created by Makefile
+/TAGS*
+
 # Stuff for .gitignore when working under xcode
 
 # osx stuff not wanted
